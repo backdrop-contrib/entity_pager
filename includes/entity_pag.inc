@@ -25,8 +25,7 @@ abstract class EntityPag {
    * @param $view
    */
   public function __construct($view) {
-    // use the setter functions to allow for dependency injection and
-    // coding best practices.
+    // set function to allow for dependency injection and coding best practices.
     $this->setView($view);
     $this->outSettings = new stdClass();
     $this->establishEntity($view);
@@ -156,7 +155,12 @@ abstract class EntityPag {
     $this->setField('all_title', $title);
   }
 
-  function getFields(){
+  /**
+   * Get Fields
+   * Get the fields returned from a View
+   * @return mixed
+   */
+  public function getFields(){
     $view = $this->getView();
     return $view->query->pager->display->handler->handlers['field'];
   }
@@ -201,7 +205,15 @@ abstract class EntityPag {
     }
   }
 
-
+  /**
+   * Establish Entity
+   *
+   * Use View result to establish the Entity type of interest.
+   * i.e. a node entity or a user entity etc..
+   * Then load that type of entity from the menu object and store it.
+   * Now it can be conveniently used by this class.
+   * @param $view
+   */
   function establishEntity($view){
 
     $entity_info = $this->establishEntityDetails($view);
@@ -210,7 +222,7 @@ abstract class EntityPag {
     $this->setEntityInfo($entity_info);
     $this->setNidFieldName();
   }
-
+  
   public function setEntityInfo($entity_info){
     $this->entity_info = $entity_info;
   }

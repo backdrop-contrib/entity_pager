@@ -1,0 +1,12 @@
+name = Entity pager
+description = Provides next and previous navigation on entities. Typical use case: you display Nodes via Display Suite, yet you still want Next & Prev navigation.
+package = Navigation
+core = 7.x
+php = 5.2
+
+dependencies[] = views
+dependencies[] = token
+
+files[] = views/plugins/views_plugin_style_entity_pager.inc
+files[] = includes/entity_pag.inc
+files[] = includes/entity_pager.inc

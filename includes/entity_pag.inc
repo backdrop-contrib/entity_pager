@@ -15,10 +15,10 @@
  */
 abstract class EntityPag {
 
-  protected $entity;
-  protected $result;
-  protected $entity_info;
-  protected $outSettings;
+  protected $entity;       // e.g. $node
+  protected $view;         // the information returned from the View
+  protected $entity_info;  // generic information about Entities.
+  protected $outSettings;  // the information to be passed to the template.
 
   /**
    * Setup Entity pager with minimum values to work with.
@@ -84,7 +84,7 @@ abstract class EntityPag {
 
   /**
    * Get View.
-   * @param $view
+   * @return mixed
    */
   public function getView() {
     return $this->view;
@@ -95,9 +95,8 @@ abstract class EntityPag {
    * Get the values input in Views > Settings > Options from the View.
    * To allow the class to take advantage of dependency injection
    * the whole $view has been injected into the class. This
-   * function uses the part of the view that is to be consistently used
-   * to get the options settings that where selected in the View for this
-   * Entity pager.
+   * function uses the part of the view data that is to be consistently used
+   * to get the options settings.
    * @param $view
    * @return mixed
    */
@@ -170,14 +169,12 @@ abstract class EntityPag {
 
   /**
    * Set Field Name of ID field.
-   * Work out which field 'id' is to be used.
-   * @param $result
-   * @return string
+   * Work out and store the field 'id' that is to be used.
+   * @return mixed
    */
   protected function setNidFieldName() {
 
     $this->getFields();
-
     if (isset($this->entity_info['alias'])){
       $field_name = $this->entity_info['alias'];
     } else
@@ -185,7 +182,6 @@ abstract class EntityPag {
       $field_name = $this->entity_info['field'];
     }
     $this->outSettings->id_field_name = $field_name;
-
     return $this->outSettings->id_field_name;
   }
 
@@ -219,7 +215,7 @@ abstract class EntityPag {
    */
   protected function establishEntity($view){
 
-    $entity_info = $this->establishEntityDetails($view);
+    $entity_info = $this->establishEntityInfo($view);
     $entity = menu_get_object($entity_info['entity_type']);
     $this->setEntity($entity);
     $this->setEntityInfo($entity_info);
@@ -227,15 +223,23 @@ abstract class EntityPag {
   }
 
   /**
-   * Establish the Entity of interest from the View.
+   * Establish the Entity Info from the View.
    * Use the View result to automatically establish the Entity type of interest.
    * e.g. node or user etc..
+   * Then return an array of information about the entity type and how the View
+   * is using it.
+   * e.g
+   *  entity_type = "user"
+   *  field       = "uid"
+   *  table       = "users"
+   *  alias       = "uid"    // this what the View is calling the field.
    *
    * @param $view
    * @return mixed
    */
-  function establishEntityDetails($view){
+  function establishEntityInfo($view){
 
+    $entity_info = NULL;
     $entity_keys = $this->getEntityKeys();
 
     $view_fields = $view->query->fields;
@@ -245,22 +249,25 @@ abstract class EntityPag {
 
       if (in_array($view_field['field'], $entity_keys)){
         $entity_flip = array_flip($entity_keys);
-        $id_field = $view_field;
-        $id_field['entity_type'] = $entity_flip[$view_field['field']];
+        $entity_info = $view_field;
+        $entity_info['entity_type'] = $entity_flip[$view_field['field']];
         break;
       }
     }
-    return $id_field;
+    return $entity_info;
   }
 
   /**
    * Get Entity Keys.
-   * Get the Key field of eache entity, it's main ID field.
-   * e.g. node = nid, user = uid etc..
+   * Get the key ID fields of each entity.
+   *  e.g.
+   *   node = nid
+   *   user = uid
    * @return mixed
    */
   protected function getEntityKeys(){
 
+    $entity_keys = array();
     $entities = entity_get_info();
     foreach($entities as $key => $value){
       $entity_keys[$key] = $value['entity keys']['id'];
@@ -268,9 +275,8 @@ abstract class EntityPag {
     return $entity_keys;
   }
 
-
   /**
-   * Set the Entity Information.
+   * Set Entity Information.
    * This stores generic information about the Entity type.
    * e.g. the entity is a 'node' and its main id field is 'nid'
    * It is required to make the module universal, so it can process entities
@@ -284,23 +290,21 @@ abstract class EntityPag {
   /**
    * Get Entity Information.
    * Get generic information about the Entity Type.
-   * If a $field is entered only information on that field is return.
-   * If no field is declared it will return the complete array of
-   * Entity Information.
+   * If no field is declared it will return the complete array of Entity
+   * Information. If a $field is entered only information on that field
+   * is returned.
    *
    * @param null $field
    * @return bool | array $entity_info
    */
-  public function getEntityInfo($field = null){
+  public function getEntityInfo($field = NULL){
 
     $entity_info = FALSE;
     if (is_null($field)){
-      // return whole array
-      $entity_info = $this->entity_info;
+      $entity_info = $this->entity_info;          // the whole array
     }
     elseif (isset($this->entity_info[$field])) {
-      // return a specific field
-      $entity_info = $this->entity_info[$field];
+      $entity_info = $this->entity_info[$field];  // a specific field
     }
     return $entity_info;
   }

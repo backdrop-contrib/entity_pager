@@ -212,9 +212,9 @@ abstract class EntityPag {
    *
    * Use View result to establish the Entity type of interest.
    * i.e. a node entity or a user entity etc..
-   * Then load that type of entity from the menu object and store it.
+   * Then load that type of entity from the menu object.
    * Now store all the information that has been worked out so it can be
-   * conveniently used by this class.
+   * conveniently used by this Class.
    * @param $view
    */
   protected function establishEntity($view){
@@ -228,14 +228,24 @@ abstract class EntityPag {
 
   /**
    * Set the Entity Information
-   * This is information about the Entity.
+   *
+   * This stores generic information about the Entity type.
    * e.g. the entity is a 'node' and its main id field is 'nid'
+   * It is required to make the module universal, so it can process entities
+   * as oppose to being hardcoded and only working for nodes.
    * @param $entity_info
    */
   protected function setEntityInfo($entity_info){
     $this->entity_info = $entity_info;
   }
-  
+
+  /**
+   * Get Entity Information
+   *
+   * Get the information about the Entity type.
+   * @param null $field
+   * @return bool | $entity_info
+   */
   public function getEntityInfo($field = null){
 
     $entity_info = FALSE;
@@ -251,10 +261,13 @@ abstract class EntityPag {
   }
 
   /**
-   * Establish the Entity of interest.
+   * Establish the Entity of interest from the View.
    *
-   * Use the View result to establish the type Entity of interest.
+   * Use the View result to automatically establish the Entity type of interest.
+   * e.g. node or user etc..
+   *
    * @param $view
+   * @return mixed
    */
   function establishEntityDetails($view){
 
@@ -277,6 +290,13 @@ abstract class EntityPag {
 
   }
 
+  /**
+   * Get Entity Key
+   *
+   * Get the Key field of an entity, it's main ID field.
+   * e.g. node = nid, user = uid etc..
+   * @return mixed
+   */
   function getEntityKeys(){
 
     $entities = entity_get_info();
@@ -285,6 +305,5 @@ abstract class EntityPag {
     }
     return $entity_keys;
   }
-
 
 }

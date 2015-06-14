@@ -52,10 +52,10 @@ class EntityPager extends EntityPag {
   }
 
   /**
-   * Process the All Link.
+   * Process Token link.
    *
-   * This unique link can have tokens set in it in the Views > settings for
-   * Entity pager.  This function processes the values added.
+   * The 'All' link can have tokens set in it in the Views > settings form
+   * 'Entity pager' section.  This function processes the values added.
    * e.g. it can turn things like entity references into Titles with links.
    *
    * @param $entity_type
@@ -91,7 +91,7 @@ class EntityPager extends EntityPag {
    * Process Entity Reference tokens.
    *
    * If it is established the Tokens are Entity References, this method
-   * converts this unique case into useful information.
+   * converts them into useful information.
    * @param $entity
    * @param $link_with_token
    * @return link
@@ -106,8 +106,7 @@ class EntityPager extends EntityPag {
     $token_in_url = explode(':', $trimmed);
     $field = $token_in_url[1];  // e.g. field_company
 
-    // set the nid field
-    $this->setField('nid_field', $field);
+    $this->setField('nid_field', $field); // set the nid field
 
     // e.g. $node->field_company['und'][0]['entity']->nid;
     $field_long = $entity->$field;

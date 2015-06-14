@@ -28,21 +28,21 @@ class views_plugin_style_entity_pager extends views_plugin_style {
     };
   }
 
-  /**
-   * Get Entity Choices
-   *
-   * Creat an array of entity choices for a Form API ratio button.
-   * @return array
-   */
-  function getEntityChoices(){
-    $entities = entity_get_info();
-
-    $choices = array();
-    foreach($entities as $entity_name => $value){
-      $choices[$entity_name] = $entity_name;
-    }
-    return $choices;
-  }
+//  /**
+//   * Get Entity Choices
+//   *
+//   * Creat an array of entity choices for a Form API ratio button.
+//   * @return array
+//   */
+//  function getEntityChoices(){
+//    $entities = entity_get_info();
+//
+//    $choices = array();
+//    foreach($entities as $entity_name => $value){
+//      $choices[$entity_name] = $entity_name;
+//    }
+//    return $choices;
+//  }
 
   /**
    * Options form in Views for Entity pager.

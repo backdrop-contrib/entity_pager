@@ -12,6 +12,21 @@
  * Provides a base Class setup for the EntityPager Class.
  * This Class contains house keeping functions for EntityPager.
  * EntityPager inherits this class and does the Business Logic.
+ *
+ * The main things that happening in this class:
+ *
+ * 1) the $view is used to automatically work out the Entity & Field of interest.
+ * e.g. it's a 'Node' and the 'nid' is the field of interest.
+ * e.g. it's a 'User' and the 'uid' is the field of interest.
+ *
+ * 2) now the entity type and $field of interest is established, this
+ * Entity record is pulled from the database.
+ *
+ * 3) the specific information of interest for the webpage is then gathered up
+ * and made convenient to use & quick to access.  This is done so it is easy
+ * to work with when constructing the Business Logic in the sub-class
+ * EntityPager.
+ *
  */
 abstract class EntityPag {
 
@@ -172,7 +187,7 @@ abstract class EntityPag {
    * Work out and store the field 'id' that is to be used.
    * @return mixed
    */
-  protected function setNidFieldName() {
+  protected function setIdFieldName() {
 
     $this->getFields();
     if (isset($this->entity_info['alias'])){
@@ -219,7 +234,7 @@ abstract class EntityPag {
     $entity = menu_get_object($entity_info['entity_type']);
     $this->setEntity($entity);
     $this->setEntityInfo($entity_info);
-    $this->setNidFieldName();
+    $this->setIdFieldName();
   }
 
   /**
@@ -259,7 +274,7 @@ abstract class EntityPag {
 
   /**
    * Get Entity Keys.
-   * Get the key ID fields of each entity.
+   * Get the key ID fields of each entity type on the site.
    *  e.g.
    *   node = nid
    *   user = uid

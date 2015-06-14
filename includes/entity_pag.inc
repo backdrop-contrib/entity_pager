@@ -226,10 +226,16 @@ abstract class EntityPag {
     $this->setNidFieldName();
   }
 
+  /**
+   * Set the Entity Information
+   * This is information about the Entity.
+   * e.g. the entity is a 'node' and its main id field is 'nid'
+   * @param $entity_info
+   */
   protected function setEntityInfo($entity_info){
     $this->entity_info = $entity_info;
   }
-
+  
   public function getEntityInfo($field = null){
 
     $entity_info = FALSE;

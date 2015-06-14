@@ -58,7 +58,7 @@ abstract class EntityPag {
 
   /**
    * Set Entity.
-   * Store the entity object. e.g. $node
+   * Store the entity object. e.g. $node or $user etc..
    * @param $entity
    */
   public function setEntity($entity) {
@@ -67,7 +67,7 @@ abstract class EntityPag {
 
   /**
    * Get Entity.
-   * Get the entity object. e.g. $node
+   * Get the entity object. e.g. $node or $user etc..
    * @return $entity
    */
   public function getEntity() {
@@ -129,6 +129,7 @@ abstract class EntityPag {
 
   /**
    * Get All Title.
+   * Form more information see comments about: getAllUrl()
    * @return mixed
    */
   public function getAllTitle() {
@@ -189,9 +190,8 @@ abstract class EntityPag {
   }
 
   /**
-   * Get Nid Field Name.
-   * Get the name of the Field that is to be used for the nid value.
-   *
+   * Get ID Field Name.
+   * Get the name of the Field that is to be used for the ID value.
    * @return bool
    */
   protected function getIdFieldName() {
@@ -213,8 +213,8 @@ abstract class EntityPag {
    * Use View result to establish the Entity type of interest.
    * i.e. a node entity or a user entity etc..
    * Then load that type of entity from the menu object.
-   * Now store all the information that has been worked out so it can be
-   * conveniently used by this Class.
+   * Then store all the information that has been worked out so it can be
+   * conveniently and efficiently used by this Class.
    * @param $view
    */
   protected function establishEntity($view){
@@ -227,42 +227,7 @@ abstract class EntityPag {
   }
 
   /**
-   * Set the Entity Information
-   *
-   * This stores generic information about the Entity type.
-   * e.g. the entity is a 'node' and its main id field is 'nid'
-   * It is required to make the module universal, so it can process entities
-   * as oppose to being hardcoded and only working for nodes.
-   * @param $entity_info
-   */
-  protected function setEntityInfo($entity_info){
-    $this->entity_info = $entity_info;
-  }
-
-  /**
-   * Get Entity Information
-   *
-   * Get the information about the Entity type.
-   * @param null $field
-   * @return bool | $entity_info
-   */
-  public function getEntityInfo($field = null){
-
-    $entity_info = FALSE;
-    if (is_null($field)){
-      // return whole array
-      $entity_info = $this->entity_info;
-    }
-    elseif (isset($this->entity_info[$field])) {
-      // return a specific field
-      $entity_info = $this->entity_info[$field];
-    }
-    return $entity_info;
-  }
-
-  /**
    * Establish the Entity of interest from the View.
-   *
    * Use the View result to automatically establish the Entity type of interest.
    * e.g. node or user etc..
    *
@@ -285,19 +250,16 @@ abstract class EntityPag {
         break;
       }
     }
-
     return $id_field;
-
   }
 
   /**
-   * Get Entity Key
-   *
-   * Get the Key field of an entity, it's main ID field.
+   * Get Entity Keys.
+   * Get the Key field of eache entity, it's main ID field.
    * e.g. node = nid, user = uid etc..
    * @return mixed
    */
-  function getEntityKeys(){
+  protected function getEntityKeys(){
 
     $entities = entity_get_info();
     foreach($entities as $key => $value){
@@ -306,4 +268,40 @@ abstract class EntityPag {
     return $entity_keys;
   }
 
+
+  /**
+   * Set the Entity Information.
+   * This stores generic information about the Entity type.
+   * e.g. the entity is a 'node' and its main id field is 'nid'
+   * It is required to make the module universal, so it can process entities
+   * as oppose to being hardcoded and only working for nodes.
+   * @param $entity_info
+   */
+  protected function setEntityInfo($entity_info){
+    $this->entity_info = $entity_info;
+  }
+
+  /**
+   * Get Entity Information.
+   * Get generic information about the Entity Type.
+   * If a $field is entered only information on that field is return.
+   * If no field is declared it will return the complete array of
+   * Entity Information.
+   *
+   * @param null $field
+   * @return bool | array $entity_info
+   */
+  public function getEntityInfo($field = null){
+
+    $entity_info = FALSE;
+    if (is_null($field)){
+      // return whole array
+      $entity_info = $this->entity_info;
+    }
+    elseif (isset($this->entity_info[$field])) {
+      // return a specific field
+      $entity_info = $this->entity_info[$field];
+    }
+    return $entity_info;
+  }
 }

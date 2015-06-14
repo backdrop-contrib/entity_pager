@@ -58,6 +58,7 @@ abstract class EntityPag {
 
   /**
    * Set Entity.
+   * Store the entity object. e.g. $node
    * @param $entity
    */
   public function setEntity($entity) {
@@ -66,6 +67,7 @@ abstract class EntityPag {
 
   /**
    * Get Entity.
+   * Get the entity object. e.g. $node
    * @return $entity
    */
   public function getEntity() {
@@ -211,10 +213,11 @@ abstract class EntityPag {
    * Use View result to establish the Entity type of interest.
    * i.e. a node entity or a user entity etc..
    * Then load that type of entity from the menu object and store it.
-   * Now it can be conveniently used by this class.
+   * Now store all the information that has been worked out so it can be
+   * conveniently used by this class.
    * @param $view
    */
-  function establishEntity($view){
+  protected function establishEntity($view){
 
     $entity_info = $this->establishEntityDetails($view);
     $entity = menu_get_object($entity_info['entity_type']);
@@ -222,8 +225,8 @@ abstract class EntityPag {
     $this->setEntityInfo($entity_info);
     $this->setNidFieldName();
   }
-  
-  public function setEntityInfo($entity_info){
+
+  protected function setEntityInfo($entity_info){
     $this->entity_info = $entity_info;
   }
 

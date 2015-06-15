@@ -2,244 +2,325 @@
 
 /**
  * @file
- * Provides the Business Logic for the entity_pager module.
+ * General setup base Class for Entity pager module.
  */
+
 
 /**
- * Class EntityPager.
+ * Class entity_pager.
  *
- * The business logic class.
+ * Provides a base Class setup for the entity_pager_out Class.
+ * This Class contains house keeping functions for entity_pager.
+ * entity_pager_out inherits this class and does the Business Logic.
  *
- * The main class for the entity_pager module that does Business Logic.
- * For best practice Business Logic is kept separate from general Class
- * maintenance tasks. This class extents EntityPag which performs
- * general Class duties.
+ * The main things that happening in this class:
+ *
+ * 1) the $view is used to automatically work out the Entity & Field of interest.
+ * e.g. it's a 'Node' and the 'nid' is the field of interest.
+ * e.g. it's a 'User' and the 'uid' is the field of interest.
+ *
+ * 2) now the entity type and $field of interest is established, this
+ * Entity record is pulled from the database.
+ *
+ * 3) the specific information of interest for the webpage is then gathered up
+ * and made convenient to use & quick to access.  This is done so it is easy
+ * to work with when constructing the Business Logic in the sub-class
+ * entity_pager_out.
+ *
  */
-class EntityPager extends EntityPag {
+abstract class entity_pager {
+
+  protected $entity;       // e.g. $node
+  protected $view;         // the information returned from the View
+  protected $entity_info;  // generic information about Entities.
+  protected $outSettings;  // the information to be passed to the template.
 
   /**
-   * Entity pager return links.
-   *
-   * The main method for returning links & counts etc.. for Entity pager.
-   * Use this to get Entity pager links.
-   *
-   * @return array|bool|void
-   */
-  public function getEntityPager() {
-
-    $entity = $this->getEntity();
-    $view = $this->getView();
-
-    if (!$entity) {
-      return FALSE;
-    }
-
-    $settings = $this->getSettings($view);
-    $entity_type = $this->getEntityInfo('entity_type');
-
-    // process to 'All' link.
-    $this->token_link(
-      $entity_type,
-      $entity,
-      $settings['next_prev']['link_all_url'],
-      $settings['next_prev']['link_all_text']
-    );
-
-    // create links for 'Next', 'All' and 'Prev' values.
-    $links = $this->calculate_next_all_prev_values_from_view($entity, $view);
-
-    return $links;
-  }
-
-  /**
-   * Process Token link.
-   *
-   * The 'All' link can have tokens set in it in the Views > settings form
-   * 'Entity pager' section.  This function processes the values added.
-   * e.g. it can turn things like entity references into Titles with links.
-   *
-   * @param $entity_type
-   * @param $entity
-   * @param $url
-   * @param $title
-   */
-  private function token_link($entity_type, $entity, $url, $title) {
-
-    $detokened = array();
-    $detokened['url'] = token_replace($url, array($entity_type => $entity));
-    $detokened['title'] = token_replace($title, array($entity_type => $entity));
-
-    if ($detokened['url'] == $url) {
-      // no tokens used
-      $new_url = $url;
-
-    }
-    elseif (drupal_valid_path($detokened['url'])) {
-      // a valid url e.g. edit node
-      $new_url = $detokened['url'];
-
-    }
-    else {
-      // entity reference process
-      $new_url = $this->entity_ref_url_from_token($entity_type, $entity, $url);
-    }
-    $this->setAllUrl($new_url);
-    $this->setAllTitle($detokened['title']);
-  }
-
-  /**
-   * Process Entity Reference tokens.
-   *
-   * If it is established the Tokens are Entity References, this method
-   * converts them into useful information.
-   * @param $entity
-   * @param $link_with_token
-   * @return link
-   */
-  protected function entity_ref_url_from_token($entity_type, $entity, $link_with_token) {
-
-    $link_all_url = '';
-
-    // get URL of token
-    // example token:  [node:field_company]
-    $trimmed = trim($link_with_token, '[]');
-    $token_in_url = explode(':', $trimmed);
-    $field = $token_in_url[1];  // e.g. field_company
-
-    $this->setField('nid_field', $field); // set the nid field
-
-    // e.g. $node->field_company['und'][0]['entity']->nid;
-    $field_long = $entity->$field;
-
-    // e.g. $field_value = $field_value[LANGUAGE_NONE][0]['entity']->nid;
-    $field_value = $field_long[LANGUAGE_NONE][0]['target_id'];
-
-    if (isset($field_value) && is_numeric($field_value)) {
-      //todo:  sort node/ below
-      $link_all_url = drupal_get_path_alias($entity_type . '/' . $field_value);
-    }
-
-    return $link_all_url;
-  }
-
-  /**
-   * Calculate the values for the links.
-   * e.g.
-   *    < prev   All  next >
-   *
-   * @param $entity
+   * Setup Entity pager with minimum values to work with.
    * @param $view
    */
-  private function calculate_next_all_prev_values_from_view($entity, $view) {
-
-    // extract the info required from the View.
-    $settings = $this->getSettings($view); // info from Views > Format > settings
-    $view_result = $this->getViewResult($view); // results of the view.
-    // field
-    $field_name = $this->getIdFieldName();
-    // entity
-    $entity_type = $this->getEntityInfo('entity_type');
-    $entity_field = $this->getEntityInfo('field');
-    // next or previous
-    $next = FALSE;
-    $match = FALSE;
-    // set short, convenient incoming values to process below.
-    $n = array(
-      'cur' => '',
-      'count' => count($view_result),
-      'next' => $settings['next_prev']['link_next'],
-      'prev' => $settings['next_prev']['link_prev'],
-    );
-    // set defaults for output.
-    $links = array(
-      'next' => $n['next'],
-      'prev' => $n['prev'],
-      'count' => '',
-    );
-
-    $cnt = 0;
-
-    foreach ($view_result as $result) {
-
-      $cnt++;
-      // keep a record of the previous nid in the loop, so when the nid is
-      // matched, we can reference the previous nid to create the 'prev' link
-      $n['cur_prev'] = $n['cur'];
-      // the current value
-      $n['cur'] = $result->$field_name;
-
-      if ($next) {
-        $links['next'] = l($n['next'], $entity_type.'/' . $result->$field_name, $options = array());
-        break;
-      }
-
-      if ($entity->$entity_field == $result->$field_name) {
-        // must be beyond the first record to have a previous
-        $match = TRUE;
-        $current_cnt = $cnt;
-        $links['prev'] = $n['prev'];
-        if ($cnt > 1) {
-          $links['prev'] = l($n['prev'], $entity_type. '/' .$n['cur_prev'], $options = array());
-        }
-        $next = TRUE; // there is a next value
-      }
-    }
-
-    if (!$match) {
-      // there are no matches.
-      watchdog('entity_pager', 'Performance Advice:  You are needlessly
-      attempting to displaying an empty Entity pager block on this page.
-      The Entity pager block has a corresponding View and the results
-      for this view do not contain the current entity (page). Please either
-      adjust the View or remove the Entity Pager block on this page.',
-        NULL, WATCHDOG_WARNING);
-
-      return;
-    }
-
-    // display the Count stats
-    if ($settings['next_prev']['display_count']) {
-      $links['count'] = t('@cnt of <span class="total">@count</span>',
-        array(
-          '@cnt' => number_format($current_cnt),
-          '@count' => number_format($n["count"]),
-        )
-      );
-    }
-
-    // create the link for the 'all' link.
-    $all_title = $this->getAllTitle();
-    $all_url = $this->getAllUrl();
-    if ($all_title && $all_url) {
-      $links['all_link'] = l($all_title, $all_url, $options = array());
-    }
-
-    $links = $this->orderLinks($links);
-    return $links;
+  public function __construct($view) {
+    // set function to allow for dependency injection and coding best practices.
+    $this->setView($view);
+    $this->outSettings = new stdClass();
+    $this->establishEntity($view);
   }
 
   /**
-   * Order links
-   *
-   * Put links (and count) in the most appropriate order.
-   * If extra links have been added from the 4 in the orders array below,
-   * they will still appear in the links array.
-   * @param $links
-   * @return mixed
+   * Generic 'Setter' for fields.
+   * @param $field
+   * @param $value
    */
-  private function orderLinks($links) {
-    // define the most usable array order.
-    $orders = array('prev', 'all_link', 'next', 'count');
-    foreach ($orders as $order) {
-      if (isset($links[$order])) {
-        $link = $links[$order];
-        // remove key => value link from middle of the array
-        unset($links[$order]);
-        // add the key => value link to the end of the array
-        $links[$order] = $link;
-      }
+  protected function setField($field, $value) {
+    if (!isset($this->outSettings)) {
+      $this->outSettings = new stdClass();
     }
-    return $links;
+    $this->outSettings->$field = $value;
   }
 
+  /**
+   * Generic 'Getter' for fields.
+   * @param $field
+   * @return bool
+   */
+  protected function getField($field) {
+
+    if (isset($this->outSettings->$field)) {
+      return $this->outSettings->$field;
+    }
+    return FALSE;
+  }
+
+  /**
+   * Set Entity.
+   * Store the entity object. e.g. $node or $user etc..
+   * @param $entity
+   */
+  public function setEntity($entity) {
+    $this->entity = $entity;
+  }
+
+  /**
+   * Get Entity.
+   * Get the entity object. e.g. $node or $user etc..
+   * @return $entity
+   */
+  public function getEntity() {
+    return $this->entity;
+  }
+
+  /**
+   * Set View.
+   * @param $view
+   */
+  public function setView($view) {
+    $this->view = $view;
+  }
+
+  /**
+   * Get View.
+   * @return mixed
+   */
+  public function getView() {
+    return $this->view;
+  }
+
+  /**
+   * Get Views Settings.
+   * Get the values input in Views > Settings > Options from the View.
+   * To allow the class to take advantage of dependency injection
+   * the whole $view has been injected into the class. This
+   * function uses the part of the view data that is to be consistently used
+   * to get the options settings.
+   * @param $view
+   * @return mixed
+   */
+  public function getSettings($view) {
+    return $view->style_plugin->options;
+  }
+
+  /**
+   * Get View Result.
+   * Get the part of the View object that contains the Views result data.
+   * @param $view
+   * @return mixed
+   */
+  public function getViewResult($view) {
+    return $view->result;
+  }
+
+  /**
+   * Get All URL.
+   * This 'get' could have been pulled from the dynamic function, but
+   * listing it's full name means IDE's will prompt (help) developers with
+   * the possible 'get' choices. This is helpful for speedy development
+   * when sharing code on Open Source projects.
+   * @return mixed
+   */
+  public function getAllUrl() {
+    return $this->getField('all_url');
+  }
+
+  /**
+   * Get All Title.
+   * Form more information see comments about: getAllUrl()
+   * @return mixed
+   */
+  public function getAllTitle() {
+    return $this->getField('all_title');
+  }
+
+  /**
+   * Set Link All Url.
+   * This 'set' could have been left as a dynamic function
+   * (i.e. setField(), but listing it's full name (i.e. setAllUrl() )
+   * means developers IDEs will prompt (help) them with the possible
+   * 'set' choices.  This IDE prompting makes it easy for other developers
+   * to work with the code quickly and easily on this Open Source project.
+   * @param $url
+   */
+  public function setAllUrl($url) {
+    $this->setField('all_url', $url);
+  }
+
+  /**
+   * Set All Title.
+   * For more info see description for: function setAllUrl($url)
+   * @param $title
+   */
+  public function setAllTitle($title) {
+    $this->setField('all_title', $title);
+  }
+
+  /**
+   * Get Fields
+   * Get the fields returned from a View
+   * @return mixed
+   */
+  public function getFields(){
+    $view = $this->getView();
+    return $view->query->pager->display->handler->handlers['field'];
+  }
+
+  /**
+   * Set Field Name of ID field.
+   * Work out and store the field 'id' that is to be used.
+   * @return mixed
+   */
+  protected function setIdFieldName() {
+
+    $this->getFields();
+    if (isset($this->entity_info['alias'])){
+      $field_name = $this->entity_info['alias'];
+    } else
+    {
+      $field_name = $this->entity_info['field'];
+    }
+    $this->outSettings->id_field_name = $field_name;
+    return $this->outSettings->id_field_name;
+  }
+
+  /**
+   * Get ID Field Name.
+   * Get the name of the Field that is to be used for the ID value.
+   * @return bool
+   */
+  protected function getIdFieldName() {
+
+    if (isset($this->outSettings->id_field_name)) {
+      return $this->outSettings->id_field_name;
+    }
+    else {
+      drupal_set_message(
+        'Entity pager Module:  you need to select a nid in your View',
+        'warning');
+      return FALSE;  // this should never happen.
+    }
+  }
+
+  /**
+   * Establish Entity
+   *
+   * Use View result to establish the Entity type of interest.
+   * i.e. a node entity or a user entity etc..
+   * Then load that type of entity from the menu object.
+   * Then store all the information that has been worked out so it can be
+   * conveniently and efficiently used by this Class.
+   * @param $view
+   */
+  protected function establishEntity($view){
+
+    $entity_info = $this->establishEntityInfo($view);
+    $entity = menu_get_object($entity_info['entity_type']);
+    $this->setEntity($entity);
+    $this->setEntityInfo($entity_info);
+    $this->setIdFieldName();
+  }
+
+  /**
+   * Establish the Entity Info from the View.
+   * Use the View result to automatically establish the Entity type of interest.
+   * e.g. node or user etc..
+   * Then return an array of information about the entity type and how the View
+   * is using it.
+   * e.g
+   *  entity_type = "user"
+   *  field       = "uid"
+   *  table       = "users"
+   *  alias       = "uid"    // this what the View is calling the field.
+   *
+   * @param $view
+   * @return mixed
+   */
+  function establishEntityInfo($view){
+
+    $entity_info = NULL;
+    $entity_keys = $this->getEntityKeys();
+
+    $view_fields = $view->query->fields;
+    // reverse order to get the last id e.g. nid or uid
+    rsort($view_fields);
+    foreach($view_fields as $view_field){
+
+      if (in_array($view_field['field'], $entity_keys)){
+        $entity_flip = array_flip($entity_keys);
+        $entity_info = $view_field;
+        $entity_info['entity_type'] = $entity_flip[$view_field['field']];
+        break;
+      }
+    }
+    return $entity_info;
+  }
+
+  /**
+   * Get Entity Keys.
+   * Get the key ID fields of each entity type on the site.
+   *  e.g.
+   *   node = nid
+   *   user = uid
+   * @return mixed
+   */
+  protected function getEntityKeys(){
+
+    $entity_keys = array();
+    $entities = entity_get_info();
+    foreach($entities as $key => $value){
+      $entity_keys[$key] = $value['entity keys']['id'];
+    }
+    return $entity_keys;
+  }
+
+  /**
+   * Set Entity Information.
+   * This stores generic information about the Entity type.
+   * e.g. the entity is a 'node' and its main id field is 'nid'
+   * It is required to make the module universal, so it can process entities
+   * as oppose to being hardcoded and only working for nodes.
+   * @param $entity_info
+   */
+  protected function setEntityInfo($entity_info){
+    $this->entity_info = $entity_info;
+  }
+
+  /**
+   * Get Entity Information.
+   * Get generic information about the Entity Type.
+   * If no field is declared it will return the complete array of Entity
+   * Information. If a $field is entered only information on that field
+   * is returned.
+   *
+   * @param null $field
+   * @return bool | array $entity_info
+   */
+  public function getEntityInfo($field = NULL){
+
+    $entity_info = FALSE;
+    if (is_null($field)){
+      $entity_info = $this->entity_info;          // the whole array
+    }
+    elseif (isset($this->entity_info[$field])) {
+      $entity_info = $this->entity_info[$field];  // a specific field
+    }
+    return $entity_info;
+  }
 }

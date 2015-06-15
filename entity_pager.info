@@ -8,5 +8,5 @@ dependencies[] = views
 dependencies[] = token
 
 files[] = views/plugins/views_plugin_style_entity_pager.inc
-files[] = includes/entity_pag.inc
 files[] = includes/entity_pager.inc
+files[] = includes/entity_pager_out.inc

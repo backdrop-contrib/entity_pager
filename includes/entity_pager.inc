@@ -177,7 +177,7 @@ abstract class entity_pager {
    * Get the fields returned from a View
    * @return mixed
    */
-  public function getFields(){
+  public function getFields() {
     $view = $this->getView();
     return $view->query->pager->display->handler->handlers['field'];
   }
@@ -190,10 +190,10 @@ abstract class entity_pager {
   protected function setIdFieldName() {
 
     $this->getFields();
-    if (isset($this->entity_info['alias'])){
+    if (isset($this->entity_info['alias'])) {
       $field_name = $this->entity_info['alias'];
-    } else
-    {
+    }
+    else {
       $field_name = $this->entity_info['field'];
     }
     $this->outSettings->id_field_name = $field_name;
@@ -228,7 +228,7 @@ abstract class entity_pager {
    * conveniently and efficiently used by this Class.
    * @param $view
    */
-  protected function establishEntity($view){
+  protected function establishEntity($view) {
 
     $entity_info = $this->establishEntityInfo($view);
     $entity = menu_get_object($entity_info['entity_type']);
@@ -252,7 +252,7 @@ abstract class entity_pager {
    * @param $view
    * @return mixed
    */
-  function establishEntityInfo($view){
+  function establishEntityInfo($view) {
 
     $entity_info = NULL;
     $entity_keys = $this->getEntityKeys();
@@ -260,9 +260,9 @@ abstract class entity_pager {
     $view_fields = $view->query->fields;
     // reverse order to get the last id e.g. nid or uid
     rsort($view_fields);
-    foreach($view_fields as $view_field){
+    foreach ($view_fields as $view_field) {
 
-      if (in_array($view_field['field'], $entity_keys)){
+      if (in_array($view_field['field'], $entity_keys)) {
         $entity_flip = array_flip($entity_keys);
         $entity_info = $view_field;
         $entity_info['entity_type'] = $entity_flip[$view_field['field']];
@@ -280,11 +280,11 @@ abstract class entity_pager {
    *   user = uid
    * @return mixed
    */
-  protected function getEntityKeys(){
+  protected function getEntityKeys() {
 
     $entity_keys = array();
     $entities = entity_get_info();
-    foreach($entities as $key => $value){
+    foreach ($entities as $key => $value) {
       $entity_keys[$key] = $value['entity keys']['id'];
     }
     return $entity_keys;
@@ -298,7 +298,7 @@ abstract class entity_pager {
    * as oppose to being hardcoded and only working for nodes.
    * @param $entity_info
    */
-  protected function setEntityInfo($entity_info){
+  protected function setEntityInfo($entity_info) {
     $this->entity_info = $entity_info;
   }
 
@@ -312,10 +312,10 @@ abstract class entity_pager {
    * @param null $field
    * @return bool | array $entity_info
    */
-  public function getEntityInfo($field = NULL){
+  public function getEntityInfo($field = NULL) {
 
     $entity_info = FALSE;
-    if (is_null($field)){
+    if (is_null($field)) {
       $entity_info = $this->entity_info;          // the whole array
     }
     elseif (isset($this->entity_info[$field])) {

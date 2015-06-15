@@ -3,10 +3,12 @@
     padding: 0em;
     margin: 0.5em 0em;
 }
+
 .entity-pager li {
     display: inline-block;
     margin: 0.3em;
 }
+
 .entity-pager .entity-pager_count {
     display: block;
     text-align: center;

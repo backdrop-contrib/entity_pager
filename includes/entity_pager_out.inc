@@ -92,9 +92,10 @@ class entity_pager_out extends entity_pager {
    *
    * If it is established the Tokens are Entity References, this method
    * converts them into useful information.
+   * @param $entity_type
    * @param $entity
    * @param $link_with_token
-   * @return link
+   * @return bool|mixed|null|string
    */
   protected function entity_ref_url_from_token($entity_type, $entity, $link_with_token) {
 
@@ -115,7 +116,6 @@ class entity_pager_out extends entity_pager {
     $field_value = $field_long[LANGUAGE_NONE][0]['target_id'];
 
     if (isset($field_value) && is_numeric($field_value)) {
-      //todo:  sort node/ below
       $link_all_url = drupal_get_path_alias($entity_type . '/' . $field_value);
     }
 
@@ -129,6 +129,7 @@ class entity_pager_out extends entity_pager {
    *
    * @param $entity
    * @param $view
+   * @return array|mixed|void
    */
   private function calculate_next_all_prev_values_from_view($entity, $view) {
 
@@ -157,7 +158,7 @@ class entity_pager_out extends entity_pager {
       'count' => '',
     );
 
-    $cnt = 0;
+    $cnt = $current_cnt = 0;
 
     foreach ($view_result as $result) {
 
@@ -194,7 +195,7 @@ class entity_pager_out extends entity_pager {
       adjust the View or remove the Entity Pager block on this page.',
         NULL, WATCHDOG_WARNING);
 
-      return;
+      return;  // return nothing.
     }
 
     // display the Count stats

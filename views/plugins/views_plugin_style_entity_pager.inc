@@ -24,25 +24,9 @@ class views_plugin_style_entity_pager extends views_plugin_style {
     $EntPag = new entity_pager_out($this->view);
     if ($links = $EntPag->get_entity_pager()) {
       $variables['links'] = $links;
-      return theme('entity_pager', $variables);
+      return theme('entity_pager', $variables); // only show if it has contents.
     };
   }
-
-//  /**
-//   * Get Entity Choices
-//   *
-//   * Creat an array of entity choices for a Form API ratio button.
-//   * @return array
-//   */
-//  function getEntityChoices(){
-//    $entities = entity_get_info();
-//
-//    $choices = array();
-//    foreach($entities as $entity_name => $value){
-//      $choices[$entity_name] = $entity_name;
-//    }
-//    return $choices;
-//  }
 
   /**
    * Options form in Views for Entity pager.

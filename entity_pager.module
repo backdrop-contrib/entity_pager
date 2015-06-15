@@ -38,6 +38,8 @@ function entity_pager_theme() {
 
 /**
  *  Implements template_preprocess_hook()
+ *
+ * @param $vars
  */
 function template_preprocess_entity_pager(&$vars) {
   drupal_add_css(drupal_get_path('module', 'entity_pager') . '/css/entity_pager.css');

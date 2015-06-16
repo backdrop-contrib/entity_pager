@@ -72,12 +72,10 @@ class entity_pager_out extends entity_pager {
     if ($detokened['url'] == $url) {
       // no tokens used
       $new_url = $url;
-
     }
     elseif (drupal_valid_path($detokened['url'])) {
       // a valid url e.g. edit node
       $new_url = $detokened['url'];
-
     }
     else {
       // entity reference process
@@ -187,12 +185,15 @@ class entity_pager_out extends entity_pager {
 
     if (!$match) {
       // there are no matches.
-      watchdog('entity_pager', 'Performance Advice:  You are needlessly
-      attempting to displaying an empty Entity Pager block on this page.
-      The Entity Pager block has a corresponding View and the results
-      for this view do not contain the current entity (page).',
-        NULL, WATCHDOG_WARNING);
-
+      if ($settings['next_prev']['log_performance']){
+        // log performance suggestions.
+        watchdog('entity_pager', 'Performance Advice:  You are needlessly
+          attempting to displaying an empty Entity Pager block on this page.
+          The Entity Pager block has a corresponding View and the results
+          for this View do not contain the current entity (page).
+          Note: if you want, you can turn this alert off in the View.',
+          NULL, WATCHDOG_INFO);
+      }
       return;  // return nothing.
     }
 

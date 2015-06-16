@@ -111,6 +111,14 @@ class views_plugin_style_entity_pager extends views_plugin_style {
         ? $this->options['next_prev']['display_count'] : TRUE,
       '#weight' => 10,
     );
+    $form['next_prev']['log_performance'] = array(
+      '#title' => t('Log performance suggestions'),
+      '#description' => t('Log performance suggestions to Watchdog, see: Reports > Recent Log Messages. '),
+      '#type' => 'checkbox',
+      '#default_value' => (isset($this->options['next_prev']['log_performance']))
+        ? $this->options['next_prev']['log_performance'] : TRUE,
+      '#weight' => 20,
+    );
 //
 //    $form['next_prev']['entity_type'] = array(
 //      '#type' => 'select',

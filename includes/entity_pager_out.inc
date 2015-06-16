@@ -29,12 +29,16 @@ class entity_pager_out extends entity_pager {
 
     $entity = $this->getEntity();
     $view = $this->getView();
+    $settings = $this->getSettings($view);  // get Views settings.
 
     if (!$entity) {
+      if ($settings['next_prev']['log_performance']) {
+        // log performance suggestions.
+        $this->setPerformanceMessage($view->human_name, 'No Entity on page');
+      }
       return FALSE;
     }
 
-    $settings = $this->getSettings($view);
     $entity_type = $this->getEntityInfo('entity_type');
 
     // process to 'All' link.
@@ -185,14 +189,9 @@ class entity_pager_out extends entity_pager {
 
     if (!$match) {
       // there are no matches.
-      if ($settings['next_prev']['log_performance']){
+      if ($settings['next_prev']['log_performance']) {
         // log performance suggestions.
-        watchdog('entity_pager', 'Performance Advice:  You are needlessly
-          attempting to displaying an empty Entity Pager block on this page.
-          The Entity Pager block has a corresponding View and the results
-          for this View do not contain the current entity (page).
-          Note: if you want, you can turn this alert off in the View.',
-          NULL, WATCHDOG_INFO);
+        $this->setPerformanceMessage($view->human_name, 'No results in View');
       }
       return;  // return nothing.
     }

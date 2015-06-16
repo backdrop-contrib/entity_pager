@@ -326,4 +326,21 @@ abstract class entity_pager {
     }
     return $entity_info;
   }
+
+  /**
+   * Set Performance Message.
+   * @param $view_name
+   * @param $reason
+   */
+  protected function setPerformanceMessage($view_name, $reason){
+
+    watchdog('entity_pager', "Performance Advice: in the View ('@view_name'),
+          the issue ('@reason'), means you are needlessly attempting to
+          displaying an empty Entity Pager block on this page.
+          If you want, you can turn this alert off see:
+          @view_name view > Format > Settings > Log performance suggestions.",
+      array('@view_name' => $view_name, '@reason' => $reason), WATCHDOG_INFO);
+
+  }
+
 }

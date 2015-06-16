@@ -332,14 +332,25 @@ abstract class entity_pager {
    * @param $view_name
    * @param $reason
    */
-  protected function setPerformanceMessage($view_name, $reason){
+  protected function setPerformanceAdvice($type, $view_name, $issue){
+    switch ($type) {
+      case 'no-records':
+          watchdog('entity_pager', "Performance Advice: in the View ('@view_name'),
+                the issue ('@reason'), means you are needlessly attempting to
+                displaying an empty Entity Pager block on this page.
+                If you want, you can turn this alert off see:
+                @view_name view > Format > Settings > Log performance suggestions.",
+          array('@view_name' => $view_name, '@reason' => $issue), WATCHDOG_INFO);
+          break;
+      default:
+          watchdog('entity_pager', "Performance Advice: in the View ('@view_name'),
+                the issue ('@reason'), means you are needlessly attempting to
+                displaying an empty Entity Pager block on this page.
+                If you want, you can turn this alert off see:
+                @view_name view > Format > Settings > Log performance suggestions.",
+          array('@view_name' => $view_name, '@reason' => $issue), WATCHDOG_INFO);
+    }
 
-    watchdog('entity_pager', "Performance Advice: in the View ('@view_name'),
-          the issue ('@reason'), means you are needlessly attempting to
-          displaying an empty Entity Pager block on this page.
-          If you want, you can turn this alert off see:
-          @view_name view > Format > Settings > Log performance suggestions.",
-      array('@view_name' => $view_name, '@reason' => $reason), WATCHDOG_INFO);
 
   }
 

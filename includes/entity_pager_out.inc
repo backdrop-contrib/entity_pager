@@ -34,7 +34,7 @@ class entity_pager_out extends entity_pager {
     if (!$entity) {
       if ($settings['next_prev']['log_performance']) {
         // log performance suggestions.
-        $this->setPerformanceMessage($view->human_name, 'No Entity on page');
+        $this->setPerformanceAdvice('no-records', $view->human_name, 'No Entity on page');
       }
       return FALSE;
     }
@@ -191,7 +191,8 @@ class entity_pager_out extends entity_pager {
       // there are no matches.
       if ($settings['next_prev']['log_performance']) {
         // log performance suggestions.
-        $this->setPerformanceMessage($view->human_name, 'No results in View');
+        $this->setPerformanceAdvice(
+          'no-records', $view->human_name, 'No results in View');
       }
       return;  // return nothing.
     }

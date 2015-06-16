@@ -107,8 +107,8 @@ class views_plugin_style_entity_pager extends views_plugin_style {
       '#title' => t('Display count'),
       '#description' => t('Display the number of records e.g. 5 of 8'),
       '#type' => 'checkbox',
-      '#default_value' => (empty($this->options['next_prev']['display_count']))
-        ? FALSE : $this->options['next_prev']['display_count'],
+      '#default_value' => (isset($this->options['next_prev']['display_count']))
+        ? $this->options['next_prev']['display_count'] : TRUE,
       '#weight' => 10,
     );
 //

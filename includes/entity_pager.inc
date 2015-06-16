@@ -2,7 +2,7 @@
 
 /**
  * @file
- * General setup base Class for Entity pager module.
+ * General setup base Class for Entity Pager module.
  */
 
 
@@ -36,7 +36,7 @@ abstract class entity_pager {
   protected $outSettings;  // the information to be passed to the template.
 
   /**
-   * Setup Entity pager with minimum values to work with.
+   * Setup Entity Pager with minimum values to work with.
    * @param $view
    */
   public function __construct($view) {
@@ -215,7 +215,7 @@ abstract class entity_pager {
     }
     else {
       drupal_set_message(
-        'Entity pager Module:  you need to select a nid in your View',
+        'Entity Pager Module:  you need to select a nid in your View',
         'warning');
       return FALSE;  // this should never happen.
     }

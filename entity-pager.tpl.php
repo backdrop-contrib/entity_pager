@@ -4,7 +4,7 @@
  * @file
  * entity-pager.tpl.php
  *
- * Adds a Entity pager pager:
+ * Adds an Entity Pager:
  * e.g.
  *    < prev  All  next >
  *          5 of 12

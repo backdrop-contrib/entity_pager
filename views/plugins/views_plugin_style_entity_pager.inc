@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains the Entity pager style plugin.
+ * Contains the Entity Pager style plugin.
  */
 
 /**
@@ -29,7 +29,7 @@ class views_plugin_style_entity_pager extends views_plugin_style {
   }
 
   /**
-   * Options form in Views for Entity pager.
+   * Options form in Views for Entity Pager.
    *
    * @param $form
    * @param $form_state
@@ -53,8 +53,8 @@ class views_plugin_style_entity_pager extends views_plugin_style {
       '#description' => t('The text to display for the Next link.'),
       '#type' => 'textfield',
       '#default_value' =>
-        (empty($this->options['next_prev']['link_next'])
-          ? 'next >' : $this->options['next_prev']['link_next']),
+        (isset($this->options['next_prev']['link_next'])
+          ? $this->options['next_prev']['link_next'] : 'next >'),
     );
 
     $form['next_prev']['link_prev'] = array(
@@ -62,8 +62,8 @@ class views_plugin_style_entity_pager extends views_plugin_style {
       '#description' => t('The text to display for the Previous link.'),
       '#type' => 'textfield',
       '#default_value' =>
-        (empty($this->options['next_prev']['link_prev'])
-          ? '< prev' : $this->options['next_prev']['link_prev']),
+        (isset($this->options['next_prev']['link_prev'])
+          ?$this->options['next_prev']['link_prev'] : '< prev'),
     );
 
     $form['next_prev']['link_all_url'] = array(
@@ -80,8 +80,8 @@ class views_plugin_style_entity_pager extends views_plugin_style {
           </ul>', array('@front' => '<front>')),
       '#type' => 'textfield',
       '#default_value' =>
-        (empty($this->options['next_prev']['link_all_url'])
-          ? '<front>' : $this->options['next_prev']['link_all_url']),
+        (isset($this->options['next_prev']['link_all_url'])
+          ?$this->options['next_prev']['link_all_url'] : '<front>'),
     );
 
     $form['next_prev']['link_all_text'] = array(
@@ -99,8 +99,8 @@ class views_plugin_style_entity_pager extends views_plugin_style {
         ),
       '#type' => 'textfield',
       '#default_value' =>
-        (empty($this->options['next_prev']['link_all_text'])
-          ? 'Home' : $this->options['next_prev']['link_all_text']),
+        (isset($this->options['next_prev']['link_all_text'])
+          ? $this->options['next_prev']['link_all_text'] : 'Home'),
     );
 
     $form['next_prev']['display_count'] = array(

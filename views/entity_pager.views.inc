@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Provide views data for the Entity pager module.
+ * Provide views data for the Entity Pager module.
  */
 
 /**
@@ -13,7 +13,7 @@ function entity_pager_views_plugins() {
     // display, style, row, argument default, argument validator and access.
     'style' => array(
       'entity_pager' => array(
-        'title' => t('Entity pager'),
+        'title' => t('Entity Pager'),
         'help' => t('Displays extra information on a Entity such as Next and Previous links'),
         'handler' => 'views_plugin_style_entity_pager',
         'theme' => 'views_view_table',

@@ -18,10 +18,10 @@
 class entity_pager_out extends entity_pager {
 
   /**
-   * Entity pager return links.
+   * Entity Pager return links.
    *
-   * The main method for returning links & counts etc.. for Entity pager.
-   * Use this to get Entity pager links.
+   * The main method for returning links & counts etc.. for Entity Pager.
+   * Use this to get Entity Pager links.
    *
    * @return array|bool|void
    */
@@ -55,7 +55,7 @@ class entity_pager_out extends entity_pager {
    * Process Token link.
    *
    * The 'All' link can have tokens set in it in the Views > settings form
-   * 'Entity pager' section.  This function processes the values added.
+   * 'Entity Pager' section.  This function processes the values added.
    * e.g. it can turn things like entity references into Titles with links.
    *
    * @param $entity_type
@@ -189,10 +189,9 @@ class entity_pager_out extends entity_pager {
     if (!$match) {
       // there are no matches.
       watchdog('entity_pager', 'Performance Advice:  You are needlessly
-      attempting to displaying an empty Entity pager block on this page.
-      The Entity pager block has a corresponding View and the results
-      for this view do not contain the current entity (page). Please either
-      adjust the View or remove the Entity Pager block on this page.',
+      attempting to displaying an empty Entity Pager block on this page.
+      The Entity Pager block has a corresponding View and the results
+      for this view do not contain the current entity (page).',
         NULL, WATCHDOG_WARNING);
 
       return;  // return nothing.

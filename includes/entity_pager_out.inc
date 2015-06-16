@@ -166,8 +166,7 @@ class entity_pager_out extends entity_pager {
       // keep a record of the previous nid in the loop, so when the nid is
       // matched, we can reference the previous nid to create the 'prev' link
       $n['cur_prev'] = $n['cur'];
-      // the current value
-      $n['cur'] = $result->$field_name;
+      $n['cur'] = $result->$field_name; // the current value
 
       if ($next) {
         $links['next'] = l($n['next'], $entity_type . '/' . $result->$field_name, $options = array());
@@ -232,10 +231,8 @@ class entity_pager_out extends entity_pager {
     $orders = array('prev', 'all_link', 'next', 'count');
     foreach ($orders as $order) {
       if (isset($links[$order])) {
-        $link = $links[$order];
-        // remove key => value link from middle of the array
-        unset($links[$order]);
-        // add the key => value link to the end of the array
+        $link = $links[$order]; // remove key => value link from middle of array
+        unset($links[$order]); // add the key => value link to the end of  array
         $links[$order] = $link;
       }
     }

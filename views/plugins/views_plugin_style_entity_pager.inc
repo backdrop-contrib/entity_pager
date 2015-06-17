@@ -63,7 +63,7 @@ class views_plugin_style_entity_pager extends views_plugin_style {
       '#type' => 'textfield',
       '#default_value' =>
         (isset($this->options['next_prev']['link_prev'])
-          ?$this->options['next_prev']['link_prev'] : '< prev'),
+          ? $this->options['next_prev']['link_prev'] : '< prev'),
     );
 
     $form['next_prev']['link_all_url'] = array(
@@ -81,7 +81,7 @@ class views_plugin_style_entity_pager extends views_plugin_style {
       '#type' => 'textfield',
       '#default_value' =>
         (isset($this->options['next_prev']['link_all_url'])
-          ?$this->options['next_prev']['link_all_url'] : '<front>'),
+          ? $this->options['next_prev']['link_all_url'] : '<front>'),
     );
 
     $form['next_prev']['link_all_text'] = array(

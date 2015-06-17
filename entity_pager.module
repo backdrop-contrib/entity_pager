@@ -2,12 +2,11 @@
 
 /**
  * @file
- * This module allows you to easily setup navigation on nodes pages.
+ * This module allows you to add Pager blocks to navigate through entities.
  */
 
 /**
  * Implements hook_views_api().
- *
  * This one is used as the base to reduce errors when updating.
  */
 function entity_pager_views_api() {
@@ -18,27 +17,23 @@ function entity_pager_views_api() {
 }
 
 /**
- * Implements hook_theme
- *
+ * Implements hook_theme.
  * @return array
  */
 function entity_pager_theme() {
 
   $themes = array();
-
   $themes['entity_pager'] = array(
     'variables' => array(
       'list' => array(),
     ),
     'template' => 'entity-pager',
   );
-
   return $themes;
 }
 
 /**
- *  Implements template_preprocess_hook()
- *
+ * Implements template_preprocess_hook().
  * @param $vars
  */
 function template_preprocess_entity_pager(&$vars) {

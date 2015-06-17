@@ -7,7 +7,7 @@
 
 //todo: sort this section.
 /**
- * Class entity_pager.
+ * Class entity_pager_advice.
  *
  * Provides a base Class setup for the entity_pager_out Class.
  *
@@ -99,22 +99,16 @@ abstract class entity_pager_advice extends entity_pager {
       case 'quantity':
         watchdog('entity_pager', "Performance Advice: in the View ('@view_name'),
                 the issue ('@reason'). At the moment there are 500+ records in
-                your pager. It might be a good idea to cache the Views Query
-                Result see: @view_name view > Other > Caching.
-                (Note: do not cache the Rendered output).
-                To ignore this advice, you can turn this alert off at:
-                @view_name view > Format > Settings > Log performance suggestions.",
+                your pager. The Entity Pager module is constructed to be fast
+                keeping processing to a minimum, that said, it might still be a
+                good idea to cache the Views Query Result see:
+                @view_name view > Other > Caching. (Note: do not cache the
+                Rendered output). To ignore this advice, you can turn this
+                alert off at: @view_name view > Format > Settings >
+                Log performance suggestions.",
           array('@view_name' => $view->human_name, '@reason' => $issue), WATCHDOG_INFO);
     }
-
-
   }
-
-
-
-
-
-
 }
 
 

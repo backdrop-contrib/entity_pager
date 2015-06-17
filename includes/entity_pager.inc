@@ -135,7 +135,7 @@ abstract class entity_pager {
    * Return the part of the View object that has the count of results.
    * @return integer
    */
-  public function getViewResultCount(){
+  public function getViewResultCount() {
     return $this->view->result_count;
   }
 

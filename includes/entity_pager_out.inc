@@ -134,7 +134,7 @@ class entity_pager_out extends entity_pager_advice {
 
     // extract the info required from the View.
     $settings = $this->getSettings($view); // info from Views > Format > settings
-    $view_result = $this->getViewResult($view); // results of the view.
+    $view_result = $this->getViewResult($view);
     // field
     $field_name = $this->getIdFieldName();
     // entity

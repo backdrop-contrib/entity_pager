@@ -2,14 +2,14 @@
 
 /**
  * @file
- * General setup base Class for Entity Pager module.
+ * A class to manage advice when using the Entity Pager module.
  */
 
-//todo: sort this section.
 /**
  * Class entity_pager_advice.
  *
- * Provides a base Class setup for the entity_pager_out Class.
+ * Provides a central and compact section of code where all performance advice
+ * logic and messages are handled.
  *
  */
 abstract class entity_pager_advice extends entity_pager {
@@ -20,7 +20,7 @@ abstract class entity_pager_advice extends entity_pager {
    * see: View > Format > Settings > Log performance suggestions
    * @return bool
    */
-  protected function check_performance(){
+  private function check_performance(){
 
     $check_performance = FALSE;
     $settings = $this->getSettings($this->getView());  // get Views settings.
@@ -35,7 +35,7 @@ abstract class entity_pager_advice extends entity_pager {
    * Get Cache status of View.
    * @return bool
    */
-  protected function views_caching_is_used(){
+  private function views_caching_is_used(){
 
     $view = $this->getView();
     $cache_value = $view->query->pager->display->handler->default_display
@@ -83,7 +83,7 @@ abstract class entity_pager_advice extends entity_pager {
    * @param $advice_type
    * @param $issue
    */
-  protected function logAdvice($advice_type, $issue){
+  private function logAdvice($advice_type, $issue){
 
     $view = $this->getView();
 

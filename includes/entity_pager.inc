@@ -225,7 +225,8 @@ abstract class entity_pager {
     }
     else {
       drupal_set_message(
-        'Entity Pager Module:  you need to select a nid in your View',
+        'Entity Pager Module:  you need to select an ID field in your View
+         e.g. nid for nodes, or uid for user etc..',
         'warning');
       return FALSE;  // this should never happen.
     }

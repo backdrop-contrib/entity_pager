@@ -15,7 +15,7 @@
  * maintenance tasks. This class extents entity_pager which performs
  * general Class duties.
  */
-class entity_pager_out extends entity_pager {
+class entity_pager_out extends entity_pager_advice {
 
   /**
    * Entity Pager return links.
@@ -32,10 +32,7 @@ class entity_pager_out extends entity_pager {
     $settings = $this->getSettings($view);  // get Views settings.
 
     if (!$entity) {
-      if ($settings['next_prev']['log_performance']) {
-        // log performance suggestions.
-        $this->setPerformanceAdvice('no-records', $view->human_name, 'No Entity on page');
-      }
+      $this->run_advice_logic('no-records', 'No Entity on page');
       return FALSE;
     }
 
@@ -153,6 +150,9 @@ class entity_pager_out extends entity_pager {
       'next' => $settings['next_prev']['link_next'],
       'prev' => $settings['next_prev']['link_prev'],
     );
+
+    $this->run_advice_logic('quantity', 'Consider caching View result');
+
     // set defaults for output.
     $links = array(
       'next' => $n['next'],
@@ -188,12 +188,7 @@ class entity_pager_out extends entity_pager {
     }
 
     if (!$match) {
-      // there are no matches.
-      if ($settings['next_prev']['log_performance']) {
-        // log performance suggestions.
-        $this->setPerformanceAdvice(
-          'no-records', $view->human_name, 'No results in View');
-      }
+      $this->run_advice_logic('no-records', 'No results in View');
       return;  // return nothing.
     }
 

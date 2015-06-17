@@ -10,7 +10,6 @@
  *
  * Provides a central and compact section of code where all performance advice
  * logic and messages are handled.
- *
  */
 abstract class entity_pager_advice extends entity_pager {
 
@@ -20,7 +19,7 @@ abstract class entity_pager_advice extends entity_pager {
    * see: View > Format > Settings > Log performance suggestions
    * @return bool
    */
-  private function check_performance(){
+  private function check_performance() {
 
     $check_performance = FALSE;
     $settings = $this->getSettings($this->getView());  // get Views settings.
@@ -35,14 +34,14 @@ abstract class entity_pager_advice extends entity_pager {
    * Get Cache status of View.
    * @return bool
    */
-  private function views_caching_is_used(){
+  private function views_caching_is_used() {
 
     $view = $this->getView();
     $cache_value = $view->query->pager->display->handler->default_display
       ->display->display_options['cache']['type'];
 
     $cache_result = TRUE;
-    if ($cache_value == 'none'){
+    if ($cache_value == 'none') {
       $cache_result = FALSE;
     }
     return $cache_result;
@@ -64,7 +63,7 @@ abstract class entity_pager_advice extends entity_pager {
         // the logic in one manageable place. The if statements are simple
         // (single purpose) meaning they are easy to work down logically.
         if ($this->getViewResultCount() > 500) {
-          if ($this->views_caching_is_used()){
+          if ($this->views_caching_is_used()) {
             // do nothing
           }
           else {
@@ -83,7 +82,7 @@ abstract class entity_pager_advice extends entity_pager {
    * @param $advice_type
    * @param $issue
    */
-  private function logAdvice($advice_type, $issue){
+  private function logAdvice($advice_type, $issue) {
 
     $view = $this->getView();
 
@@ -93,8 +92,12 @@ abstract class entity_pager_advice extends entity_pager {
                 the issue ('@reason'), means you are needlessly attempting to
                 displaying an empty Entity Pager block on this page.
                 To ignore this advice, you can turn this alert off at:
-                @view_name view > Format > Settings > Log performance suggestions.",
-          array('@view_name' => $view->human_name, '@reason' => $issue), WATCHDOG_INFO);
+                @view_name view > Format > Settings > Log performance
+                suggestions.",
+          array(
+            '@view_name' => $view->human_name,
+            '@reason' => $issue
+          ), WATCHDOG_INFO);
         break;
       case 'quantity':
         watchdog('entity_pager', "Performance Advice: in the View ('@view_name'),
@@ -106,7 +109,10 @@ abstract class entity_pager_advice extends entity_pager {
                 Rendered output). To ignore this advice, you can turn this
                 alert off at: @view_name view > Format > Settings >
                 Log performance suggestions.",
-          array('@view_name' => $view->human_name, '@reason' => $issue), WATCHDOG_INFO);
+          array(
+            '@view_name' => $view->human_name,
+            '@reason' => $issue
+          ), WATCHDOG_INFO);
     }
   }
 }

@@ -119,16 +119,6 @@ class views_plugin_style_entity_pager extends views_plugin_style {
         ? $this->options['next_prev']['log_performance'] : TRUE,
       '#weight' => 20,
     );
-//
-//    $form['next_prev']['entity_type'] = array(
-//      '#type' => 'select',
-//      '#title' => t('Entity type'),
-//      '#default_value' => 'node',
-//      '#options' => $this->getEntityChoices(),
-//      '#description' =>
-//        t('Please select the entity type of interest.'),
-//      '#weight' => 20,
-//    );
 
     $form['spacer_one'] = array(
       '#markup' => '&nbsp;',

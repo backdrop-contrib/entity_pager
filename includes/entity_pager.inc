@@ -266,7 +266,7 @@ abstract class entity_pager {
    * @param $view
    * @return mixed
    */
-  function establishEntityInfo($view) {
+  protected function establishEntityInfo($view) {
 
     $entity_info = NULL;
     $entity_keys = $this->getEntityKeys();
@@ -336,5 +336,5 @@ abstract class entity_pager {
     }
     return $entity_info;
   }
-  
+
 }

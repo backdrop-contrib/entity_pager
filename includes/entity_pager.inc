@@ -322,7 +322,6 @@ abstract class entity_pager {
    * If no field is declared it will return the complete array of Entity
    * Information. If a $field is entered only information on that field
    * is returned.
-   *
    * @param null $field
    * @return bool | array $entity_info
    */
@@ -337,5 +336,5 @@ abstract class entity_pager {
     }
     return $entity_info;
   }
-
+  
 }

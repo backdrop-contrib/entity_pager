@@ -1,5 +1,5 @@
 name = Entity Pager
-description = Provides next and previous navigation on entities. Typical use case: you display Nodes via Display Suite, yet you still want Next & Prev navigation.
+description = Provides next and previous navigation on entities. It uses Views, Blocks, Tokens and has its own internal intelligent advice system which (optionally) adds tips to Watchdog on how to improve your implementation. Example usage: navigate through a Brands products or go back to the Brand page itself.
 package = Navigation
 core = 7.x
 php = 5.2

@@ -15,12 +15,12 @@ function entity_pager_help($path, $arg) {
       $output = '';
       $output .= '<h3>' . t('About') . '</h3>';
       $output .= '<p>' . t('Provides next and previous navigation on entities.') . '<p>';
-      $output .= '<p>' . t(' e.g.') . '<p>';
-      $output .= '<p>' . ' &nbsp '. t(' < prev ').' &nbsp '.t(' All ').' &nbsp '.t(' next > ').'<p>';
+      $output .= '<p>' . ' &nbsp ' . t('e.g.') . '<p>';
+      $output .= '<p>' . ' &nbsp ' . t('< prev') . ' &nbsp ' . t('All') . ' &nbsp ' . t('next >') . '<p>';
       $output .= '<p>' . t('You can add multiple different navigation blocks on the same entity. This module combines Views, Blocks, Tokens and has its own internal intelligent advice system giving tips that are published to Watchdog (optionally). It is designed to run fast with the minimum of processing.');
       $output .= '<p>' . t('It is simple to use, allowing you can create Navigation blocks in a few seconds. For more complex pagers, it can combine with the Entity Reference module to create generic sub-navigation on related entities.');
-      $output .= '<p>' . t(' e.g. navigate through a Brands products or go back to the Brand page itself.').'<p>';
-      $output .= '<p>' . ' &nbsp '. t(' < prev ').' &nbsp '.t(' Pepsi ').' &nbsp '.t(' next > ').'<p>';
+      $output .= '<p>' . ' &nbsp ' . t('e.g. navigate through a Brands products or go back to the Brand page itself.') . '<p>';
+      $output .= '<p>' . ' &nbsp ' . t('< prev') . ' &nbsp ' . t('Pepsi') . ' &nbsp ' . t('next >') . '<p>';
 
       $output .= '<p>' . t('see demonstration video at:  ??????');
       return $output;

@@ -28,7 +28,7 @@
  * entity_pager_out.
  *
  */
-abstract class entity_pager_sets  extends entity_pager {
+abstract class entity_pager_setup  extends entity_pager {
 
   protected $entity;       // e.g. $node
   protected $view;         // the information returned from the View

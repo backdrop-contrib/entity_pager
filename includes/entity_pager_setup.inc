@@ -53,9 +53,6 @@ abstract class entity_pager_setup  extends entity_pager {
    * @param $value
    */
   protected function setField($field, $value) {
-    if (!isset($this->outSettings)) {
-      $this->outSettings = new stdClass();
-    }
     $this->outSettings->$field = $value;
   }
 

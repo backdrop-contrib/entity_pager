@@ -118,7 +118,7 @@ abstract class entity_pager_setup  extends entity_pager {
    * @return mixed
    */
   public function getSettings($view) {
-    if (!isset($view->style_plugin->options->next_prev)){
+    if (!isset($view->style_plugin->options['next_prev'])){
       $view->style_plugin->options['next_prev'] = $this->getDefault();
     }
     return $view->style_plugin->options;

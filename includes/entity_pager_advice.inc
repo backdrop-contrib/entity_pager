@@ -11,7 +11,7 @@
  * Provides a central and compact section of code where all performance advice
  * logic and messages are handled.
  */
-abstract class entity_pager_advice extends entity_pager {
+abstract class entity_pager_advice extends entity_pager_sets {
 
   /**
    * Check performance

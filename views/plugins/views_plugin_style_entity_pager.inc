@@ -38,6 +38,8 @@ class views_plugin_style_entity_pager extends views_plugin_style {
 
     parent::options_form($form, $form_state);
 
+    $default = new entity_pager();
+
     // setup an options form that
     $form['next_prev'] = array(
       '#type' => 'fieldset',
@@ -54,7 +56,8 @@ class views_plugin_style_entity_pager extends views_plugin_style {
       '#type' => 'textfield',
       '#default_value' =>
         (isset($this->options['next_prev']['link_next'])
-          ? $this->options['next_prev']['link_next'] : 'next >'),
+          ? $this->options['next_prev']['link_next']
+          : $default->getDefault('link_next')),
     );
 
     $form['next_prev']['link_prev'] = array(
@@ -63,7 +66,8 @@ class views_plugin_style_entity_pager extends views_plugin_style {
       '#type' => 'textfield',
       '#default_value' =>
         (isset($this->options['next_prev']['link_prev'])
-          ? $this->options['next_prev']['link_prev'] : '< prev'),
+          ? $this->options['next_prev']['link_prev']
+          : $default->getDefault('link_prev')),
     );
 
     $form['next_prev']['link_all_url'] = array(
@@ -81,7 +85,8 @@ class views_plugin_style_entity_pager extends views_plugin_style {
       '#type' => 'textfield',
       '#default_value' =>
         (isset($this->options['next_prev']['link_all_url'])
-          ? $this->options['next_prev']['link_all_url'] : '<front>'),
+          ? $this->options['next_prev']['link_all_url']
+          : $default->getDefault('link_all_url')),
     );
 
     $form['next_prev']['link_all_text'] = array(
@@ -100,7 +105,8 @@ class views_plugin_style_entity_pager extends views_plugin_style {
       '#type' => 'textfield',
       '#default_value' =>
         (isset($this->options['next_prev']['link_all_text'])
-          ? $this->options['next_prev']['link_all_text'] : 'Home'),
+          ? $this->options['next_prev']['link_all_text']
+          : $default->getDefault('link_all_text')),
     );
 
     $form['next_prev']['display_count'] = array(
@@ -108,7 +114,8 @@ class views_plugin_style_entity_pager extends views_plugin_style {
       '#description' => t('Display the number of records e.g. 5 of 8'),
       '#type' => 'checkbox',
       '#default_value' => (isset($this->options['next_prev']['display_count']))
-        ? $this->options['next_prev']['display_count'] : TRUE,
+        ? $this->options['next_prev']['display_count']
+        : $default->getDefault('display_count'),
       '#weight' => 10,
     );
     $form['next_prev']['log_performance'] = array(
@@ -116,7 +123,8 @@ class views_plugin_style_entity_pager extends views_plugin_style {
       '#description' => t('Log performance suggestions to Watchdog, see: Reports > Recent Log Messages.'),
       '#type' => 'checkbox',
       '#default_value' => (isset($this->options['next_prev']['log_performance']))
-        ? $this->options['next_prev']['log_performance'] : TRUE,
+        ? $this->options['next_prev']['log_performance']
+        : $default->getDefault('log_performance'),
       '#weight' => 20,
     );
 

@@ -136,9 +136,10 @@ class entity_pager_out extends entity_pager_advice {
     // i.e. info from Views > Format > settings
     $settings = $this->getSettings($view);
     $view_result = $this->getViewResult($view);
-    $field_name = $this->getIdFieldName();             // field
+    $field_name = $this->getIdFieldName();              // field
     $entity_type = $this->getEntityInfo('entity_type'); // entity
     $entity_field = $this->getEntityInfo('field');
+    $entity_url = str_replace('_', '/', $entity_type);
 
     // next or previous
     $next = FALSE;
@@ -171,7 +172,7 @@ class entity_pager_out extends entity_pager_advice {
       $n['cur'] = $result->$field_name; // the current value
 
       if ($next) {
-        $links['next'] = l($n['next'], $entity_type . '/' . $result->$field_name, $options = array());
+        $links['next'] = l($n['next'], $entity_url . '/' . $result->$field_name, $options = array());
         break;
       }
 
@@ -181,7 +182,7 @@ class entity_pager_out extends entity_pager_advice {
         $current_cnt = $cnt;
         $links['prev'] = $n['prev'];
         if ($cnt > 1) {
-          $links['prev'] = l($n['prev'], $entity_type . '/' . $n['cur_prev'], $options = array());
+          $links['prev'] = l($n['prev'], $entity_url . '/' . $n['cur_prev'], $options = array());
         }
         $next = TRUE; // there is a next value
       }

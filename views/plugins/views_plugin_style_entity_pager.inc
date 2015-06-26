@@ -73,11 +73,12 @@ class views_plugin_style_entity_pager extends views_plugin_style {
     $form['next_prev']['link_all_url'] = array(
       '#title' => t('List All URL'),
       '#description' =>
-        t('The <strong>URL</strong> of the listing Link
-          (e.g. a Views listing page) or you can use:
+        t('The <strong>URL</strong> of the listing Link.<br>
+          Examples include:
           <ul>
+              <li>the URL of a Views listing page of the Entities.</li>
               <li><strong>@front</strong> for the <strong>homepage</strong></li>
-              <li>a <strong>Node</strong>
+              <li>a <strong>Node</strong>.
               <a href="/admin/help/token"><strong>Token</strong></a>. The node
               token can also be an <strong>entity reference</strong> if the node
               has one. </br> e.g. [node:field_company]
@@ -98,7 +99,7 @@ class views_plugin_style_entity_pager extends views_plugin_style {
               <li>When an <strong>entity reference</strong> is used in
               the <strong>List All URL</strong> box above, just add the same
               entity reference in this box and the referenced
-              <strong>Node Title</strong> will automatically be displayed.
+              <strong>Entity Title</strong> will automatically be displayed.
               </li>
           </ul>"
         ),

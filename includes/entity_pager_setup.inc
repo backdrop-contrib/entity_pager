@@ -199,12 +199,8 @@ abstract class entity_pager_setup  extends entity_pager {
    * @return mixed
    */
   protected function setIdFieldName() {
-
-    $fields = $this->getFields();
-    if (isset($fields['nid']->field_alias)) {
-      $field_name = $fields['nid']->field_alias;
-    }
-    elseif (isset($this->entity_info['alias'])) {
+    
+    if (isset($this->entity_info['alias'])) {
       $field_name = $this->entity_info['alias'];
     }
     else {

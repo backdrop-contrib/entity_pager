@@ -106,7 +106,7 @@ class entity_pager_out extends entity_pager_advice {
     $token_in_url = explode(':', $trimmed);
     $field = $token_in_url[1];  // e.g. field_company
 
-    $this->setField('nid_field', $field); // set the nid field
+    $this->setField('id_field', $field); // set the id field
 
     // e.g. $node->field_company['und'][0]['entity']->nid;
     $field_long = $entity->$field;

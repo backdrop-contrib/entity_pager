@@ -1,6 +1,4 @@
 
-
-
 =======================================================
 ================|  Description |=======================
 =======================================================
@@ -22,7 +20,7 @@ e.g. navigate through a Brands products or go back to the Brand page itself.
 =============|  Video Demonstration  |=================
 =======================================================
 
-see: todo.
+see: https://youtu.be/oJUcjKLz8ls
 
 =======================================================
 ================|  Installation  |=====================
@@ -36,7 +34,6 @@ Install this Drupal module as usual, see http://drupal.org/node/895232 for furth
 
 This module works on any Entity, but for simplicity these instructions will walk you through
 adding an Entity Pager to a node.
-
 
 Quick Instructions:
 ==================
@@ -94,9 +91,15 @@ To place an Entity Pager block for other Entities (e.g. Users) simply reread the
 the work 'node' with 'user' and instead of 'nid' use 'uid'.
 
 =======================================================
+==========|  Instructions with Screenshots |===========
+=======================================================
+
+http://www.jmokay.com/drupal/entity-pager-module
+
+=======================================================
 ================|    Author     |======================
 =======================================================
 
 James Lawson
-  @JmOkay
+www.jmokay.com
 

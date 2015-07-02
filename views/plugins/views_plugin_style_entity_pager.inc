@@ -78,10 +78,10 @@ class views_plugin_style_entity_pager extends views_plugin_style {
           <ul>
               <li>the URL of a Views listing page of the Entities.</li>
               <li><strong>@front</strong> for the <strong>homepage</strong></li>
-              <li>a <strong>Node</strong>.
-              <a href="/admin/help/token"><strong>Token</strong></a>. The node
-              token can also be an <strong>entity reference</strong> if the node
-              has one. </br> e.g. [node:field_company]
+              <li>a <a href="/admin/help/token"><strong>Token</strong></a> that
+              relates to the Entity.  e.g. [node:edit-url]</li>
+              <li>The token can also be an <strong>entity reference</strong> if the entity
+              has one.  e.g. [node:field_company]</li>
           </ul>', array('@front' => '<front>')),
       '#type' => 'textfield',
       '#default_value' =>
@@ -93,8 +93,8 @@ class views_plugin_style_entity_pager extends views_plugin_style {
     $form['next_prev']['link_all_text'] = array(
       '#title' => t('List All label'),
       '#description' =>
-        t("The <strong>text</strong> to display for the <strong>List All URL
-          </strong>.
+        t("The <strong>text</strong> to display for the <strong>List All URL.
+          </strong>
           <ul>
               <li>When an <strong>entity reference</strong> is used in
               the <strong>List All URL</strong> box above, just add the same

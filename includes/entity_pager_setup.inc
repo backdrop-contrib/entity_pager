@@ -306,7 +306,7 @@ abstract class entity_pager_setup extends entity_pager {
     $entity_keys = $this->getEntityKeys();
 
     $view_fields = $view->query->fields;
-    // Reverse order to get the last id e.g. nid or uid
+    // Reverse order to get the last id e.g. nid or uid.
     rsort($view_fields);
     foreach ($view_fields as $view_field) {
 

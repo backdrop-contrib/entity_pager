@@ -14,7 +14,7 @@
 abstract class entity_pager_advice extends entity_pager_setup {
 
   /**
-   * Check performance
+   * Check performance.
    *
    * See if the option in the View is set to set to log performance.
    * see: View > Format > Settings > Log performance suggestions.
@@ -122,8 +122,5 @@ abstract class entity_pager_advice extends entity_pager_setup {
           ), WATCHDOG_INFO);
     }
   }
+  
 }
-
-
-
-

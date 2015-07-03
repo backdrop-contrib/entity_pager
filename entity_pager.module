@@ -30,7 +30,6 @@ function entity_pager_help($path, $arg) {
  * Implements hook_views_api().
  *
  * This one is used as the base to reduce errors when updating.
- * @return array
  */
 function entity_pager_views_api() {
   return array(
@@ -41,8 +40,6 @@ function entity_pager_views_api() {
 
 /**
  * Implements hook_theme.
- *
- * @return array
  */
 function entity_pager_theme() {
 

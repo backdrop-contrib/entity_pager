@@ -85,6 +85,7 @@ abstract class entity_pager_setup extends entity_pager {
 
   /**
    * Get Entity.
+   *
    * Get the entity object. e.g. $node or $user etc..
    *
    * @return $entity

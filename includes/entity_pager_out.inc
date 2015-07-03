@@ -106,7 +106,7 @@ class entity_pager_out extends entity_pager_advice {
     // Example token:  [node:field_company]
     $trimmed = trim($link_with_token, '[]');
     $token_in_url = explode(':', $trimmed);
-    $field = $token_in_url[1];  // e.g. field_company
+    $field = $token_in_url[1];  // E.g. field_company.
 
     $this->setField('id_field', $field); // Set the id field.
 

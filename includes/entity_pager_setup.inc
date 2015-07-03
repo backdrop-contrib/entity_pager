@@ -31,16 +31,16 @@
 abstract class entity_pager_setup extends entity_pager {
 
   protected $entity;       // e.g. $node
-  protected $view;         // the information returned from the View
-  protected $entity_info;  // generic information about Entities.
-  protected $outSettings;  // the information to be passed to the template.
+  protected $view;         // The information returned from the View.
+  protected $entity_info;  // Generic information about Entities.
+  protected $outSettings;  // The information to be passed to the template.
 
   /**
    * Setup Entity Pager with minimum values to work with.
    * @param $view
    */
   public function __construct($view) {
-    // set function to allow for dependency injection and coding best practices.
+    // Set function to allow for dependency injection and coding best practices.
     $this->setDefaults();
     $this->setView($view);
     $this->outSettings = new stdClass();
@@ -225,7 +225,7 @@ abstract class entity_pager_setup extends entity_pager {
         'Entity Pager Module:  you need to select an ID field in your View
          e.g. nid for nodes, or uid for user etc..',
         'warning'));
-      return FALSE;  // this should never happen.
+      return FALSE;  // This should never happen.
     }
   }
 
@@ -243,7 +243,7 @@ abstract class entity_pager_setup extends entity_pager {
 
     $entity_info = $this->establishEntityInfo($view);
     $position = 1 + substr_count($entity_info['entity_type'], '_');
-    // position is normally 1, (e.g. node/8 ), but things like taxonomy_term
+    // Position is normally 1, (e.g. node/8 ), but things like taxonomy_term
     // get turned into taxonomy/term (e.g. taxonomy/term/8).
     $entity = menu_get_object($entity_info['entity_type'], $position);
     $this->setEntity($entity);
@@ -272,7 +272,7 @@ abstract class entity_pager_setup extends entity_pager {
     $entity_keys = $this->getEntityKeys();
 
     $view_fields = $view->query->fields;
-    // reverse order to get the last id e.g. nid or uid
+    // Reverse order to get the last id e.g. nid or uid
     rsort($view_fields);
     foreach ($view_fields as $view_field) {
 
@@ -329,10 +329,10 @@ abstract class entity_pager_setup extends entity_pager {
 
     $entity_info = FALSE;
     if (is_null($field)) {
-      $entity_info = $this->entity_info;          // the whole array
+      $entity_info = $this->entity_info;          // The whole array.
     }
     elseif (isset($this->entity_info[$field])) {
-      $entity_info = $this->entity_info[$field];  // a specific field
+      $entity_info = $this->entity_info[$field];  // A specific field.
     }
     return $entity_info;
   }

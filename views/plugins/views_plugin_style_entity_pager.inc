@@ -24,7 +24,7 @@ class views_plugin_style_entity_pager extends views_plugin_style {
     $pager = new entity_pager_out($this->view);
     if ($links = $pager->get_entity_pager()) {
       $variables['links'] = $links;
-      return theme('entity_pager', $variables); // only show if it has contents.
+      return theme('entity_pager', $variables); // Only show if it has contents.
     };
   }
 
@@ -40,7 +40,7 @@ class views_plugin_style_entity_pager extends views_plugin_style {
 
     $default = new entity_pager();
 
-    // setup an options form that
+    // Setup an options form.
     $form['next_prev'] = array(
       '#type' => 'fieldset',
       '#title' => t('Next Previous links'),
@@ -133,7 +133,7 @@ class views_plugin_style_entity_pager extends views_plugin_style {
       '#markup' => '&nbsp;',
     );
 
-    // Remove unwanted inherited form elements
+    // Remove unwanted inherited form elements.
     $form['grouping'] = '';
 
     if ($this->uses_fields()) {
@@ -142,4 +142,5 @@ class views_plugin_style_entity_pager extends views_plugin_style {
     $form['default_row_class'] = '';
     $form['row_class_special'] = '';
   }
+
 }

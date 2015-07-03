@@ -22,7 +22,7 @@ abstract class entity_pager_advice extends entity_pager_setup {
   private function check_performance() {
 
     $check_performance = FALSE;
-    $settings = $this->getSettings($this->getView());  // get Views settings.
+    $settings = $this->getSettings($this->getView());  // Get Views settings.
 
     if ($settings['next_prev']['log_performance']) {
       $check_performance = TRUE;
@@ -56,7 +56,7 @@ abstract class entity_pager_advice extends entity_pager_setup {
   protected function run_advice_logic($advice_type, $issue) {
 
     if ($this->check_performance()) {
-      // log performance suggestions.
+      // Log performance suggestions.
       if ($advice_type == 'quantity') {
         // Coding note:  ideally nested 'if' statements should be avoided,
         // but the whole purpose of this little logic method is to sort
@@ -64,7 +64,7 @@ abstract class entity_pager_advice extends entity_pager_setup {
         // (single purpose) meaning they are easy to work down logically.
         if ($this->getViewResultCount() > 500) {
           if ($this->views_caching_is_used()) {
-            // do nothing
+            // Do nothing.
           }
           else {
             $this->logAdvice($advice_type, $issue);

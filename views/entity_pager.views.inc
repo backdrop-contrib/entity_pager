@@ -10,7 +10,7 @@
  */
 function entity_pager_views_plugins() {
   $plugins = array(
-    // display, style, row, argument default, argument validator and access.
+    // Display, style, row, argument default, argument validator and access.
     'style' => array(
       'entity_pager' => array(
         'title' => t('Entity Pager'),

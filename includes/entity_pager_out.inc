@@ -29,7 +29,7 @@ class entity_pager_out extends entity_pager_advice {
 
     $entity = $this->getEntity();
     $view = $this->getView();
-    $settings = $this->getSettings($view);  // get Views settings.
+    $settings = $this->getSettings($view);  // Get Views settings.
 
     if (!$entity) {
       $this->run_advice_logic('no-records', 'No Entity on page');
@@ -38,7 +38,7 @@ class entity_pager_out extends entity_pager_advice {
 
     $entity_type = $this->getEntityInfo('entity_type');
 
-    // process to 'All' link.
+    // Process to 'All' link.
     $this->token_link(
       $entity_type,
       $entity,
@@ -46,7 +46,7 @@ class entity_pager_out extends entity_pager_advice {
       $settings['next_prev']['link_all_text']
     );
 
-    // create links for 'Next', 'All' and 'Prev' values.
+    // Create links for 'Next', 'All' and 'Prev' values.
     $links = $this->calculate_next_all_prev_values_from_view($entity, $view);
 
     return $links;
@@ -71,15 +71,15 @@ class entity_pager_out extends entity_pager_advice {
     $detokened['title'] = token_replace($title, array($entity_type => $entity));
 
     if ($detokened['url'] == $url) {
-      // no tokens used
+      // No tokens used.
       $new_url = $url;
     }
     elseif (drupal_valid_path($detokened['url'])) {
-      // a valid url e.g. edit node
+      // A valid url e.g. edit node.
       $new_url = $detokened['url'];
     }
     else {
-      // entity reference process
+      // Entity reference process.
       $new_url = $this->entity_ref_url_from_token($entity_type, $entity, $url);
     }
     $this->setAllUrl($new_url);
@@ -100,13 +100,13 @@ class entity_pager_out extends entity_pager_advice {
 
     $link_all_url = '';
 
-    // get URL of token
-    // example token:  [node:field_company]
+    // Get URL of token.
+    // Example token:  [node:field_company]
     $trimmed = trim($link_with_token, '[]');
     $token_in_url = explode(':', $trimmed);
     $field = $token_in_url[1];  // e.g. field_company
 
-    $this->setField('id_field', $field); // set the id field
+    $this->setField('id_field', $field); // Set the id field.
 
     // e.g. $node->field_company['und'][0]['entity']->nid;
     $field_long = $entity->$field;
@@ -132,19 +132,19 @@ class entity_pager_out extends entity_pager_advice {
    */
   private function calculate_next_all_prev_values_from_view($entity, $view) {
 
-    // extract the info required from the View.
+    // Extract the info required from the View.
     // i.e. info from Views > Format > settings
     $settings = $this->getSettings($view);
     $view_result = $this->getViewResult($view);
-    $field_name = $this->getIdFieldName();              // field
-    $entity_type = $this->getEntityInfo('entity_type'); // entity
+    $field_name = $this->getIdFieldName();              // Field.
+    $entity_type = $this->getEntityInfo('entity_type'); // Entity.
     $entity_field = $this->getEntityInfo('field');
     $entity_url = str_replace('_', '/', $entity_type);
 
-    // next or previous
+    // Next or Previous
     $next = FALSE;
     $match = FALSE;
-    // set short, convenient incoming values to process below.
+    // Set short, convenient incoming values to process below.
     $n = array(
       'cur' => '',
       'count' => count($view_result),
@@ -154,7 +154,7 @@ class entity_pager_out extends entity_pager_advice {
 
     $this->run_advice_logic('quantity', 'Consider caching View result');
 
-    // set defaults for output.
+    // Set defaults for output.
     $links = array(
       'next' => $n['next'],
       'prev' => $n['prev'],
@@ -166,10 +166,10 @@ class entity_pager_out extends entity_pager_advice {
     foreach ($view_result as $result) {
 
       $cnt++;
-      // keep a record of the previous nid in the loop, so when the nid is
-      // matched, we can reference the previous nid to create the 'prev' link
+      // Keep a record of the previous nid in the loop, so when the nid is
+      // matched, we can reference the previous nid to create the 'prev' link.
       $n['cur_prev'] = $n['cur'];
-      $n['cur'] = $result->$field_name; // the current value
+      $n['cur'] = $result->$field_name; // The current value.
 
       if ($next) {
         $links['next'] = l($n['next'],
@@ -178,7 +178,7 @@ class entity_pager_out extends entity_pager_advice {
       }
 
       if ($entity->$entity_field == $result->$field_name) {
-        // must be beyond the first record to have a previous
+        // Must be beyond the first record to have a previous.
         $match = TRUE;
         $current_cnt = $cnt;
         $links['prev'] = $n['prev'];
@@ -186,16 +186,16 @@ class entity_pager_out extends entity_pager_advice {
           $links['prev'] = l($n['prev'],
             $entity_url . '/' . $n['cur_prev'], $options = array());
         }
-        $next = TRUE; // there is a next value
+        $next = TRUE; // There is a next value.
       }
     }
 
     if (!$match) {
       $this->run_advice_logic('no-records', 'No results in View');
-      return;  // return nothing.
+      return;  // Return nothing.
     }
 
-    // display the Count stats
+    // Display the Count stats.
     if ($settings['next_prev']['display_count']) {
       $links['count'] = t('@cnt of <span class="total">@count</span>',
         array(
@@ -205,7 +205,7 @@ class entity_pager_out extends entity_pager_advice {
       );
     }
 
-    // create the link for the 'all' link.
+    // Create the link for the 'all' link.
     $all_tle = $this->getAllTitle();
     $all_url = $this->getAllUrl();
     if ($all_tle && $all_url) {
@@ -226,12 +226,12 @@ class entity_pager_out extends entity_pager_advice {
    * @return mixed
    */
   private function orderLinks($links) {
-    // define the most usable array order.
+    // Define the most usable array order.
     $orders = array('prev', 'all_link', 'next', 'count');
     foreach ($orders as $order) {
       if (isset($links[$order])) {
-        $link = $links[$order]; // remove key => value link from middle of array
-        unset($links[$order]); // add the key => value link to the end of  array
+        $link = $links[$order]; // Remove key => value link from middle of array.
+        unset($links[$order]); // Add the key => value link to the end of  array.
         $links[$order] = $link;
       }
     }

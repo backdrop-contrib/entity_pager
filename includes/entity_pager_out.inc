@@ -91,6 +91,7 @@ class entity_pager_out extends entity_pager_advice {
    *
    * If it is established the Tokens are Entity References, this method
    * converts them into useful information.
+   *
    * @param $entity_type
    * @param $entity
    * @param $link_with_token
@@ -123,6 +124,7 @@ class entity_pager_out extends entity_pager_advice {
 
   /**
    * Calculate the values for the links.
+   *
    * e.g.
    *    < prev   All  next >
    *
@@ -222,6 +224,7 @@ class entity_pager_out extends entity_pager_advice {
    * Put links (and count) in the most appropriate order.
    * If extra links have been added from the 4 in the orders array below,
    * they will still appear in the links array.
+   *
    * @param $links
    * @return mixed
    */

@@ -15,8 +15,10 @@ abstract class entity_pager_advice extends entity_pager_setup {
 
   /**
    * Check performance
+   *
    * See if the option in the View is set to set to log performance.
-   * see: View > Format > Settings > Log performance suggestions
+   * see: View > Format > Settings > Log performance suggestions.
+   *
    * @return bool
    */
   private function check_performance() {
@@ -32,6 +34,7 @@ abstract class entity_pager_advice extends entity_pager_setup {
 
   /**
    * Get Cache status of View.
+   *
    * @return bool
    */
   private function views_caching_is_used() {
@@ -49,7 +52,9 @@ abstract class entity_pager_advice extends entity_pager_setup {
 
   /**
    * Run advice logic.
+   *
    * Run the logic that manages performance advice.
+   *
    * @param $advice_type
    * @param $issue
    */
@@ -79,6 +84,7 @@ abstract class entity_pager_advice extends entity_pager_setup {
 
   /**
    * Set Performance Message.
+   * 
    * @param $advice_type
    * @param $issue
    */

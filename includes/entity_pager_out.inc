@@ -172,7 +172,8 @@ class entity_pager_out extends entity_pager_advice {
       $n['cur'] = $result->$field_name; // the current value
 
       if ($next) {
-        $links['next'] = l($n['next'], $entity_url . '/' . $result->$field_name, $options = array());
+        $links['next'] = l($n['next'],
+          $entity_url . '/' . $result->$field_name, $options = array());
         break;
       }
 
@@ -182,7 +183,8 @@ class entity_pager_out extends entity_pager_advice {
         $current_cnt = $cnt;
         $links['prev'] = $n['prev'];
         if ($cnt > 1) {
-          $links['prev'] = l($n['prev'], $entity_url . '/' . $n['cur_prev'], $options = array());
+          $links['prev'] = l($n['prev'],
+            $entity_url . '/' . $n['cur_prev'], $options = array());
         }
         $next = TRUE; // there is a next value
       }

@@ -23,8 +23,9 @@ class views_plugin_style_entity_pager extends views_plugin_style {
 
     $pager = new entity_pager_out($this->view);
     if ($links = $pager->get_entity_pager()) {
+      // Only show if it has contents.
       $variables['links'] = $links;
-      return theme('entity_pager', $variables); // Only show if it has contents.
+      return theme('entity_pager', $variables);
     };
   }
 

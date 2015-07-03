@@ -5,7 +5,6 @@
  * This module allows you to add Pager blocks to navigate through entities.
  */
 
-
 /**
  * Implements hook_help().
  */
@@ -29,7 +28,9 @@ function entity_pager_help($path, $arg) {
 
 /**
  * Implements hook_views_api().
+ *
  * This one is used as the base to reduce errors when updating.
+ * @return array
  */
 function entity_pager_views_api() {
   return array(
@@ -40,6 +41,7 @@ function entity_pager_views_api() {
 
 /**
  * Implements hook_theme.
+ *
  * @return array
  */
 function entity_pager_theme() {
@@ -56,6 +58,7 @@ function entity_pager_theme() {
 
 /**
  * Implements template_preprocess_hook().
+ *
  * @param $vars
  */
 function template_preprocess_entity_pager(&$vars) {

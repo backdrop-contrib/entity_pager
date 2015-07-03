@@ -20,7 +20,6 @@
  * $links['all_link'] : link to All listing group of records.
  * $links['next'] : link to next node in the sequence.
  * $links['count'] : count of number of nodes in the group.
- *
  */
 
 ?>
@@ -31,7 +30,3 @@
     </li>
   <?php endforeach; ?>
 </ul>
-
-
-
-

@@ -221,10 +221,10 @@ abstract class entity_pager_setup extends entity_pager {
       return $this->outSettings->id_field_name;
     }
     else {
-      drupal_set_message(
+      drupal_set_message(t(
         'Entity Pager Module:  you need to select an ID field in your View
          e.g. nid for nodes, or uid for user etc..',
-        'warning');
+        'warning'));
       return FALSE;  // this should never happen.
     }
   }

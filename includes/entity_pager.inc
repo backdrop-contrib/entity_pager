@@ -39,7 +39,7 @@ class entity_pager {
   /**
    * Set the default values for Entity Pager.
    */
-  function setDefaults(){
+  function setDefaults() {
 
     $this->default = array(
       'link_next' => 'next >',
@@ -59,11 +59,11 @@ class entity_pager {
    * @param null $field
    * @return bool|array|string
    */
-  function getDefault($field = NULL){
+  function getDefault($field = NULL) {
 
     $value = FALSE;
-    if (is_null($field)){
-      $value =  $this->default;
+    if (is_null($field)) {
+      $value = $this->default;
     }
     elseif (isset($this->default[$field])) {
       $value = $this->default[$field];

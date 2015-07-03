@@ -56,7 +56,6 @@ abstract class entity_pager_advice extends entity_pager_setup {
    * Run the logic that manages performance advice.
    *
    * @param $advice_type
-   *
    * @param $issue
    */
   protected function run_advice_logic($advice_type, $issue) {
@@ -103,7 +102,7 @@ abstract class entity_pager_advice extends entity_pager_setup {
                 suggestions.",
           array(
             '@view_name' => $view->human_name,
-            '@reason' => $issue
+            '@reason' => $issue,
           ), WATCHDOG_INFO);
         break;
       case 'quantity':
@@ -118,9 +117,9 @@ abstract class entity_pager_advice extends entity_pager_setup {
                 Log performance suggestions.",
           array(
             '@view_name' => $view->human_name,
-            '@reason' => $issue
+            '@reason' => $issue,
           ), WATCHDOG_INFO);
     }
   }
-  
+
 }

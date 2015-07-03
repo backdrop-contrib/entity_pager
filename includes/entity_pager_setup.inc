@@ -50,7 +50,6 @@ abstract class entity_pager_setup extends entity_pager {
    * Generic 'Setter' for fields.
    *
    * @param $field
-   *
    * @param $value
    */
   protected function setField($field, $value) {
@@ -151,7 +150,7 @@ abstract class entity_pager_setup extends entity_pager {
    *
    * Return the part of the View object that has the count of results.
    *
-   * @return integer
+   * @return int
    */
   public function getViewResultCount() {
     return $this->view->result_count;

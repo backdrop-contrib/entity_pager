@@ -80,8 +80,8 @@ These instructions will walk you through adding an Entity Pager to a node.
     the Uid field and so on)
 
 9) Remove any other fields (e.g. Title) from the View, they are not needed and
-will only unnecessarily make the database search more resource heavy on the system.
-i.e. just add the one field to the View, the field nid.
+will only unnecessarily make the database search more resource heavy on the
+system. i.e. just add the one field to the View, the field nid.
 
 (TIP: you can create your View however you like, but removing unneeded lookups
 is the most efficient on system resources.  You probable also don't need the

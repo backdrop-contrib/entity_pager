@@ -26,7 +26,6 @@
  * and made convenient to use & quick to access.  This is done so it is easy
  * to work with when constructing the Business Logic in the sub-class
  * entity_pager_out.
- *
  */
 class entity_pager {
 
@@ -52,10 +51,12 @@ class entity_pager {
   }
 
   /**
-   * Get Default value
+   * Get Default value.
+   *
    * Use this one method to get all default values in a consistent way.
    * If a field is specified return just that field value.
    * If no field is specified return the whole array.
+   *
    * @param null $field
    * @return bool|array|string
    */

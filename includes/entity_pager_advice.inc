@@ -84,7 +84,7 @@ abstract class entity_pager_advice extends entity_pager_setup {
 
   /**
    * Set Performance Message.
-   * 
+   *
    * @param $advice_type
    * @param $issue
    */

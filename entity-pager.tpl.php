@@ -5,7 +5,7 @@
  * entity-pager.tpl.php
  *
  * Adds an Entity Pager:
- * e.g.
+ * E.g.
  *    < prev  All  next >
  *          5 of 12
  *

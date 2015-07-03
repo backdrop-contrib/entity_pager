@@ -57,7 +57,7 @@ class entity_pager_out extends entity_pager_advice {
    *
    * The 'All' link can have tokens set in it in the Views > settings form
    * 'Entity Pager' section.  This function processes the values added.
-   * e.g. it can turn things like entity references into Titles with links.
+   * E.g. it can turn things like entity references into Titles with links.
    *
    * @param $entity_type
    * @param $entity
@@ -110,10 +110,10 @@ class entity_pager_out extends entity_pager_advice {
 
     $this->setField('id_field', $field); // Set the id field.
 
-    // e.g. $node->field_company['und'][0]['entity']->nid;
+    // E.g. $node->field_company['und'][0]['entity']->nid;
     $field_long = $entity->$field;
 
-    // e.g. $field_value = $field_value[LANGUAGE_NONE][0]['entity']->nid;
+    // E.g. $field_value = $field_value[LANGUAGE_NONE][0]['entity']->nid;
     $field_value = $field_long[LANGUAGE_NONE][0]['target_id'];
 
     if (isset($field_value) && is_numeric($field_value)) {
@@ -126,7 +126,7 @@ class entity_pager_out extends entity_pager_advice {
   /**
    * Calculate the values for the links.
    *
-   * e.g.
+   * E.g.
    *    < prev   All  next >
    *
    * @param $entity
@@ -137,7 +137,7 @@ class entity_pager_out extends entity_pager_advice {
   private function calculate_next_all_prev_values_from_view($entity, $view) {
 
     // Extract the info required from the View.
-    // i.e. info from Views > Format > settings
+    // I.e. info from Views > Format > settings.
     $settings = $this->getSettings($view);
     $view_result = $this->getViewResult($view);
     $field_name = $this->getIdFieldName();              // Field.
@@ -145,7 +145,7 @@ class entity_pager_out extends entity_pager_advice {
     $entity_field = $this->getEntityInfo('field');
     $entity_url = str_replace('_', '/', $entity_type);
 
-    // Next or Previous
+    // Next or Previous.
     $next = FALSE;
     $match = FALSE;
     // Set short, convenient incoming values to process below.
@@ -236,8 +236,8 @@ class entity_pager_out extends entity_pager_advice {
     $orders = array('prev', 'all_link', 'next', 'count');
     foreach ($orders as $order) {
       if (isset($links[$order])) {
-        $link = $links[$order]; // Remove key => value link from middle of array.
-        unset($links[$order]); // Add the key => value link to the end of  array.
+        $link = $links[$order];// Remove key => value link from middle of array.
+        unset($links[$order]);// Add the key => value link to the end of  array.
         $links[$order] = $link;
       }
     }

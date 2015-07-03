@@ -58,7 +58,7 @@ These instructions will walk you through adding an Entity Pager to a node.
 
 1) Create a View.
  - i.e. Structure > Views > Add new view
- - (note: you must have the Views UI module turned on to see the Views interface)
+ - note: you must have the Views UI module turned on to see the Views interface
 
 2) Fill in the box: View name.
 
@@ -79,8 +79,8 @@ These instructions will walk you through adding an Entity Pager to a node.
  - (note: to create a Pager on Nodes use the Nid field, for a Pager of Users
     the Uid field and so on)
 
-9) Remove any other fields (e.g. Title) from the View, they are not needed and will only
-unnecessarily make the database search more resource heavy on the system.
+9) Remove any other fields (e.g. Title) from the View, they are not needed and
+will only unnecessarily make the database search more resource heavy on the system.
 i.e. just add the one field to the View, the field nid.
 
 (TIP: you can create your View however you like, but removing unneeded lookups

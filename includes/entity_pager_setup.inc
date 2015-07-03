@@ -15,8 +15,8 @@
  * The main things that happening in this class:
  *
  * 1) $view is used to automatically work out the Entity & Field of interest.
- * e.g. it's a 'Node' and the 'nid' is the field of interest.
- * e.g. it's a 'User' and the 'uid' is the field of interest.
+ * E.g. it's a 'Node' and the 'nid' is the field of interest.
+ * E.g. it's a 'User' and the 'uid' is the field of interest.
  *
  * 2) now the entity type and $field of interest is established, this
  * Entity record is pulled from the database.
@@ -287,10 +287,10 @@ abstract class entity_pager_setup extends entity_pager {
    * Establish the Entity Info from the View.
    *
    * Use the View result to automatically establish the Entity type of interest.
-   * e.g. node or user etc..
+   * E.g. node or user etc..
    * Then return an array of information about the entity type and how the View
    * is using it.
-   * e.g
+   * E.g
    *  entity_type = "user"
    *  field       = "uid"
    *  table       = "users"
@@ -324,7 +324,7 @@ abstract class entity_pager_setup extends entity_pager {
    * Get Entity Keys.
    *
    * Get the key ID fields of each entity type on the site.
-   *  e.g.
+   * E.g.
    *   node = nid
    *   user = uid
    *
@@ -344,7 +344,7 @@ abstract class entity_pager_setup extends entity_pager {
    * Set Entity Information.
    *
    * This stores generic information about the Entity type.
-   * e.g. the entity is a 'node' and its main id field is 'nid'
+   * E.g. the entity is a 'node' and its main id field is 'nid'.
    * It is required to make the module universal, so it can process entities
    * as oppose to being hardcoded and only working for nodes.
    *

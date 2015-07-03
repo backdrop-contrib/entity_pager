@@ -14,7 +14,7 @@
  *
  * The main things that happening in this class:
  *
- * 1) the $view is used to automatically work out the Entity & Field of interest.
+ * 1) the $view is used to automatically work out the Entity & Field of interest
  * e.g. it's a 'Node' and the 'nid' is the field of interest.
  * e.g. it's a 'User' and the 'uid' is the field of interest.
  *
@@ -57,6 +57,7 @@ class entity_pager {
    * If no field is specified return the whole array.
    *
    * @param null $field
+   *
    * @return bool|array|string
    */
   function getDefault($field = NULL) {

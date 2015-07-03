@@ -50,6 +50,7 @@ abstract class entity_pager_setup extends entity_pager {
    * Generic 'Setter' for fields.
    *
    * @param $field
+   *
    * @param $value
    */
   protected function setField($field, $value) {
@@ -60,6 +61,7 @@ abstract class entity_pager_setup extends entity_pager {
    * Generic 'Getter' for fields.
    *
    * @param $field
+   *
    * @return bool
    */
   protected function getField($field) {
@@ -120,6 +122,7 @@ abstract class entity_pager_setup extends entity_pager {
    * to get the options settings.
    *
    * @param $view
+   *
    * @return mixed
    */
   public function getSettings($view) {
@@ -135,6 +138,7 @@ abstract class entity_pager_setup extends entity_pager {
    * Get the part of the View object that contains the Views result data.
    *
    * @param $view
+   *
    * @return mixed
    */
   public function getViewResult($view) {
@@ -292,6 +296,7 @@ abstract class entity_pager_setup extends entity_pager {
    *  alias       = "uid"    // this what the View is calling the field.
    *
    * @param $view
+   *
    * @return mixed
    */
   protected function establishEntityInfo($view) {
@@ -357,6 +362,7 @@ abstract class entity_pager_setup extends entity_pager {
    * is returned.
    *
    * @param null $field
+   *
    * @return bool | array $entity_info
    */
   public function getEntityInfo($field = NULL) {

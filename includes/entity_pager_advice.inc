@@ -56,6 +56,7 @@ abstract class entity_pager_advice extends entity_pager_setup {
    * Run the logic that manages performance advice.
    *
    * @param $advice_type
+   *
    * @param $issue
    */
   protected function run_advice_logic($advice_type, $issue) {
@@ -122,6 +123,7 @@ abstract class entity_pager_advice extends entity_pager_setup {
     }
   }
 }
+
 
 
 

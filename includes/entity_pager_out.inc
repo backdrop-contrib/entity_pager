@@ -95,6 +95,7 @@ class entity_pager_out extends entity_pager_advice {
    * @param $entity_type
    * @param $entity
    * @param $link_with_token
+   *
    * @return bool|mixed|null|string
    */
   protected function entity_ref_url_from_token($entity_type, $entity, $link_with_token) {
@@ -130,6 +131,7 @@ class entity_pager_out extends entity_pager_advice {
    *
    * @param $entity
    * @param $view
+   *
    * @return array|mixed|void
    */
   private function calculate_next_all_prev_values_from_view($entity, $view) {
@@ -226,6 +228,7 @@ class entity_pager_out extends entity_pager_advice {
    * they will still appear in the links array.
    *
    * @param $links
+   *
    * @return mixed
    */
   private function orderLinks($links) {

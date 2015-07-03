@@ -5,7 +5,6 @@
  * General setup base Class for Entity Pager module.
  */
 
-
 /**
  * Class entity_pager.
  *

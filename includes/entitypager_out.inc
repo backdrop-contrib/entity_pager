@@ -26,7 +26,7 @@ class EntityPager_out extends EntityPager_advice {
    * @return array|bool|void
    *   Get the results for an entity pager.
    */
-  public function get_entitypager() {
+  public function getEntityPager() {
 
     $entity = $this->getEntity();
     $view = $this->getView();

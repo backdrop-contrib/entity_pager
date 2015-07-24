@@ -22,7 +22,7 @@ class views_plugin_style_entitypager extends views_plugin_style {
     }
 
     $pager = new entitypager_out($this->view);
-    if ($links = $pager->get_entitypager()) {
+    if ($links = $pager->getEntityPager()) {
       // Only show if it has contents.
       $variables['links'] = $links;
       return theme('entitypager', $variables);

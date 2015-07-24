@@ -33,7 +33,7 @@ abstract class EntityPager_setup extends EntityPager {
   // The information returned from the View.
   protected $view;
   // Generic information about Entities.
-  protected $entity_info;
+  protected $entityInfo;
   // The information to be passed to the template.
   protected $outSettings;
 
@@ -263,11 +263,11 @@ abstract class EntityPager_setup extends EntityPager {
    */
   protected function setIdFieldName() {
 
-    if (isset($this->entity_info['alias'])) {
-      $field_name = $this->entity_info['alias'];
+    if (isset($this->entityInfo['alias'])) {
+      $field_name = $this->entityInfo['alias'];
     }
     else {
-      $field_name = $this->entity_info['field'];
+      $field_name = $this->entityInfo['field'];
     }
     $this->outSettings->id_field_name = $field_name;
     return $this->outSettings->id_field_name;
@@ -310,13 +310,13 @@ abstract class EntityPager_setup extends EntityPager {
    */
   protected function establishEntity($view) {
 
-    $entity_info = $this->establishEntityInfo($view);
-    $position = 1 + substr_count($entity_info['entity_type'], '_');
+    $entityInfo = $this->establishEntityInfo($view);
+    $position = 1 + substr_count($entityInfo['entity_type'], '_');
     // Position is normally 1, (e.g. node/8 ), but things like taxonomy_term
     // get turned into taxonomy/term (e.g. taxonomy/term/8).
-    $entity = menu_get_object($entity_info['entity_type'], $position);
+    $entity = menu_get_object($entityInfo['entity_type'], $position);
     $this->setEntity($entity);
-    $this->setEntityInfo($entity_info);
+    $this->setEntityInfo($entityInfo);
     $this->setIdFieldName();
   }
 
@@ -341,7 +341,7 @@ abstract class EntityPager_setup extends EntityPager {
    */
   protected function establishEntityInfo($view) {
 
-    $entity_info = NULL;
+    $entityInfo = NULL;
     $entity_keys = $this->getEntityKeys();
 
     $view_fields = $view->query->fields;
@@ -351,12 +351,12 @@ abstract class EntityPager_setup extends EntityPager {
 
       if (in_array($view_field['field'], $entity_keys)) {
         $entity_flip = array_flip($entity_keys);
-        $entity_info = $view_field;
-        $entity_info['entity_type'] = $entity_flip[$view_field['field']];
+        $entityInfo = $view_field;
+        $entityInfo['entity_type'] = $entity_flip[$view_field['field']];
         break;
       }
     }
-    return $entity_info;
+    return $entityInfo;
   }
 
   /**
@@ -389,11 +389,11 @@ abstract class EntityPager_setup extends EntityPager {
    * It is required to make the module universal, so it can process entities
    * as oppose to being hardcoded and only working for nodes.
    *
-   * @param object $entity_info
+   * @param object $entityInfo
    *   Set the Entity info object.
    */
-  protected function setEntityInfo($entity_info) {
-    $this->entity_info = $entity_info;
+  protected function setEntityInfo($entityInfo) {
+    $this->entityInfo = $entityInfo;
   }
 
   /**
@@ -407,21 +407,21 @@ abstract class EntityPager_setup extends EntityPager {
    * @param string|null $field
    *   Either leave as null for the whole object or specify an individual field.
    *
-   * @return bool|object $entity_info
+   * @return bool|object $entityInfo
    *   Get the Entity Info object.
    */
   public function getEntityInfo($field = NULL) {
 
-    $entity_info = FALSE;
+    $entityInfo = FALSE;
     if (is_null($field)) {
       // The whole array.
-      $entity_info = $this->entity_info;
+      $entityInfo = $this->entityInfo;
     }
-    elseif (isset($this->entity_info[$field])) {
+    elseif (isset($this->entityInfo[$field])) {
       // A specific field.
-      $entity_info = $this->entity_info[$field];
+      $entityInfo = $this->entityInfo[$field];
     }
-    return $entity_info;
+    return $entityInfo;
   }
 
 }

@@ -65,7 +65,7 @@ abstract class entity_pager_advice extends entity_pager_setup {
    * @param text $issue
    *   The specific issue.
    */
-  protected function run_advice_logic($advice_type, $issue) {
+  protected function run_advice_logic(text $advice_type, text $issue) {
 
     if ($this->check_performance()) {
       // Log performance suggestions.
@@ -99,7 +99,7 @@ abstract class entity_pager_advice extends entity_pager_setup {
    * @param text $issue
    *   The specific issue.
    */
-  private function logAdvice($advice_type, $issue) {
+  private function logAdvice(text $advice_type, text $issue) {
 
     $view = $this->getView();
 

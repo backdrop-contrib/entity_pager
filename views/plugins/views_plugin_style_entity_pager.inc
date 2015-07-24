@@ -37,7 +37,7 @@ class views_plugin_style_entity_pager extends views_plugin_style {
    * @param array $form_state
    *   A keyed array containing the current state of the form.
    */
-  public function options_form(&$form, &$form_state) {
+  public function options_form(array &$form, array &$form_state) {
 
     parent::options_form($form, $form_state);
 
@@ -113,8 +113,8 @@ class views_plugin_style_entity_pager extends views_plugin_style {
       '#description' => t('Display the number of records e.g. 5 of 8'),
       '#type' => 'checkbox',
       '#default_value' => (isset($this->options['next_prev']['display_count']))
-        ? $this->options['next_prev']['display_count']
-        : $default->getDefault('display_count'),
+      ? $this->options['next_prev']['display_count']
+      : $default->getDefault('display_count'),
       '#weight' => 10,
     );
     $form['next_prev']['log_performance'] = array(
@@ -122,8 +122,8 @@ class views_plugin_style_entity_pager extends views_plugin_style {
       '#description' => t('Log performance suggestions to Watchdog, see: Reports > Recent Log Messages.'),
       '#type' => 'checkbox',
       '#default_value' => (isset($this->options['next_prev']['log_performance']))
-        ? $this->options['next_prev']['log_performance']
-        : $default->getDefault('log_performance'),
+      ? $this->options['next_prev']['log_performance']
+      : $default->getDefault('log_performance'),
       '#weight' => 20,
     );
 

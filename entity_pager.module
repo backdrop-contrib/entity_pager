@@ -63,6 +63,6 @@ function entity_pager_theme() {
  * @param array $variables
  *   An associative array of $variables passed into template.
  */
-function template_preprocess_entity_pager(&$variables) {
+function template_preprocess_entity_pager(array &$variables) {
   drupal_add_css(drupal_get_path('module', 'entity_pager') . '/css/entity_pager.css');
 }

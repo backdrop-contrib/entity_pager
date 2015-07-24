@@ -69,7 +69,7 @@ class entity_pager_out extends entity_pager_advice {
    * @param text $title
    *   The title for the link.
    */
-  private function token_link($entity_type, $entity, $url, $title) {
+  private function token_link(text $entity_type, object $entity, text $url, text $title) {
 
     $detokened = array();
     $detokened['url'] = token_replace($url, array($entity_type => $entity));
@@ -97,16 +97,16 @@ class entity_pager_out extends entity_pager_advice {
    * If it is established the Tokens are Entity References, this method
    * converts them into useful information.
    *
-   * @param $entity_type
+   * @param text $entity_type
    *   The type of entity.
-   * @param $entity
+   * @param object $entity
    *   The entity object.
-   * @param $link_with_token
+   * @param text $link_with_token
    *   The link with the token in.
    *
    * @return bool|mixed|null|string
    */
-  protected function entity_ref_url_from_token($entity_type, $entity, $link_with_token) {
+  protected function entity_ref_url_from_token(text $entity_type, object $entity, text $link_with_token) {
 
     $link_all_url = '';
 
@@ -138,15 +138,15 @@ class entity_pager_out extends entity_pager_advice {
    * E.g.
    *    < prev   All  next >
    *
-   * @param $entity
+   * @param object $entity
    *   The entity object.
-   * @param $view
+   * @param object $view
    *   The view object.
    *
    * @return array|mixed|void
    *   An array of links.
    */
-  private function calculate_next_all_prev_values_from_view($entity, $view) {
+  private function calculate_next_all_prev_values_from_view(object $entity, object $view) {
 
     // Extract the info required from the View.
     // I.e. info from Views > Format > settings.
@@ -250,7 +250,7 @@ class entity_pager_out extends entity_pager_advice {
    * @return array link.
    *   An array of links ordered in the most appropriate way.
    */
-  private function orderLinks($links) {
+  private function orderLinks(array $links) {
     // Define the most usable array order.
     $orders = array('prev', 'all_link', 'next', 'count');
     foreach ($orders as $order) {

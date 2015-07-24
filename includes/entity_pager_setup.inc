@@ -72,7 +72,7 @@ abstract class entity_pager_setup extends entity_pager {
    *
    * A generic getter to get the values of a field.
    *
-   * @param text $field
+   * @param string $field
    *   Get a specific field.
    *
    * @return bool
@@ -404,7 +404,7 @@ abstract class entity_pager_setup extends entity_pager {
    * Information. If a $field is entered only information on that field
    * is returned.
    *
-   * @param text|null $field
+   * @param string|null $field
    *   Either leave as null for the whole object or specify an individual field.
    *
    * @return bool|object $entity_info

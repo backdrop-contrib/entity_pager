@@ -60,13 +60,13 @@ class entity_pager_out extends entity_pager_advice {
    * 'Entity Pager' section.  This function processes the values added.
    * E.g. it can turn things like entity references into Titles with links.
    *
-   * @param text $entity_type
+   * @param string $entity_type
    *   The type of entity.
    * @param object $entity
    *   The entity object.
    * @param string $url
    *   The url to be added to link.
-   * @param text $title
+   * @param string $title
    *   The title for the link.
    */
   private function token_link($entity_type, $entity, $url, $title) {
@@ -97,11 +97,11 @@ class entity_pager_out extends entity_pager_advice {
    * If it is established the Tokens are Entity References, this method
    * converts them into useful information.
    *
-   * @param text $entity_type
+   * @param string $entity_type
    *   The type of entity.
    * @param object $entity
    *   The entity object.
-   * @param text $link_with_token
+   * @param string $link_with_token
    *   The link with the token in.
    *
    * @return bool|mixed|null|string
@@ -143,7 +143,7 @@ class entity_pager_out extends entity_pager_advice {
    * @param object $view
    *   The view object.
    *
-   * @return array|mixed|void
+   * @return array|bool
    *   An array of links.
    */
   private function calculate_next_all_prev_values_from_view($entity, $view) {
@@ -213,7 +213,7 @@ class entity_pager_out extends entity_pager_advice {
     if (!$match) {
       $this->run_advice_logic('no-records', 'No results in View');
       // Return nothing.
-      return;
+      return FALSE;
     }
 
     // Display the Count stats.

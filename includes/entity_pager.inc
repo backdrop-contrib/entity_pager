@@ -59,7 +59,7 @@ class entity_pager {
    * If a field is specified return just that field value.
    * If no field is specified return the whole array.
    *
-   * @param text|null $field
+   * @param string|null $field
    *   The field the default value is required for.
    *
    * @return bool|array|string

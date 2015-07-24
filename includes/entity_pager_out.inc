@@ -105,6 +105,7 @@ class entity_pager_out extends entity_pager_advice {
    *   The link with the token in.
    *
    * @return bool|mixed|null|string
+   *   return a url from an Entity Reference.
    */
   protected function entity_ref_url_from_token($entity_type, $entity, $link_with_token) {
 

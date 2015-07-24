@@ -28,10 +28,14 @@
  */
 abstract class entity_pager_setup extends entity_pager {
 
-  protected $entity;       // e.g. $node
-  protected $view;         // The information returned from the View.
-  protected $entity_info;  // Generic information about Entities.
-  protected $outSettings;  // The information to be passed to the template.
+  // e.g. $node
+  protected $entity;
+  // The information returned from the View.
+  protected $view;
+  // Generic information about Entities.
+  protected $entity_info;
+  // The information to be passed to the template.
+  protected $outSettings;
 
   /**
    * Setup Entity Pager with minimum values to work with.
@@ -255,7 +259,8 @@ abstract class entity_pager_setup extends entity_pager {
         'Entity Pager Module:  you need to select an ID field in your View
          e.g. nid for nodes, or uid for user etc..',
         'warning'));
-      return FALSE;  // This should never happen.
+      // This should never happen.
+      return FALSE;
     }
   }
 
@@ -293,7 +298,7 @@ abstract class entity_pager_setup extends entity_pager {
    *  entity_type = "user"
    *  field       = "uid"
    *  table       = "users"
-   *  alias       = "uid"    // this what the View is calling the field.
+   *  alias       = "uid"
    *
    * @param $view
    *
@@ -369,10 +374,12 @@ abstract class entity_pager_setup extends entity_pager {
 
     $entity_info = FALSE;
     if (is_null($field)) {
-      $entity_info = $this->entity_info;          // The whole array.
+      // The whole array.
+      $entity_info = $this->entity_info;
     }
     elseif (isset($this->entity_info[$field])) {
-      $entity_info = $this->entity_info[$field];  // A specific field.
+      // A specific field.
+      $entity_info = $this->entity_info[$field];
     }
     return $entity_info;
   }

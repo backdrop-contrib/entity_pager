@@ -29,7 +29,7 @@ class entity_pager_out extends entity_pager_advice {
 
     $entity = $this->getEntity();
     $view = $this->getView();
-    $settings = $this->getSettings($view);  // Get Views settings.
+    $settings = $this->getSettings($view);
 
     if (!$entity) {
       $this->run_advice_logic('no-records', 'No Entity on page');
@@ -106,9 +106,10 @@ class entity_pager_out extends entity_pager_advice {
     // Example token:  [node:field_company]
     $trimmed = trim($link_with_token, '[]');
     $token_in_url = explode(':', $trimmed);
-    $field = $token_in_url[1];  // E.g. field_company.
-
-    $this->setField('id_field', $field); // Set the id field.
+    // E.g. field_company.
+    $field = $token_in_url[1];
+    // Set the id field.
+    $this->setField('id_field', $field);
 
     // E.g. $node->field_company['und'][0]['entity']->nid;
     $field_long = $entity->$field;
@@ -140,8 +141,10 @@ class entity_pager_out extends entity_pager_advice {
     // I.e. info from Views > Format > settings.
     $settings = $this->getSettings($view);
     $view_result = $this->getViewResult($view);
-    $field_name = $this->getIdFieldName();              // Field.
-    $entity_type = $this->getEntityInfo('entity_type'); // Entity.
+    // Field.
+    $field_name = $this->getIdFieldName();
+    // Entity.
+    $entity_type = $this->getEntityInfo('entity_type');
     $entity_field = $this->getEntityInfo('field');
     $entity_url = str_replace('_', '/', $entity_type);
 
@@ -173,7 +176,8 @@ class entity_pager_out extends entity_pager_advice {
       // Keep a record of the previous nid in the loop, so when the nid is
       // matched, we can reference the previous nid to create the 'prev' link.
       $n['cur_prev'] = $n['cur'];
-      $n['cur'] = $result->$field_name; // The current value.
+      // The current value.
+      $n['cur'] = $result->$field_name;
 
       if ($next) {
         $links['next'] = l($n['next'],
@@ -190,13 +194,15 @@ class entity_pager_out extends entity_pager_advice {
           $links['prev'] = l($n['prev'],
             $entity_url . '/' . $n['cur_prev'], $options = array());
         }
-        $next = TRUE; // There is a next value.
+        // There is a next value.
+        $next = TRUE;
       }
     }
 
     if (!$match) {
       $this->run_advice_logic('no-records', 'No results in View');
-      return;  // Return nothing.
+      // Return nothing.
+      return;
     }
 
     // Display the Count stats.
@@ -236,8 +242,10 @@ class entity_pager_out extends entity_pager_advice {
     $orders = array('prev', 'all_link', 'next', 'count');
     foreach ($orders as $order) {
       if (isset($links[$order])) {
-        $link = $links[$order];// Remove key => value link from middle of array.
-        unset($links[$order]);// Add the key => value link to the end of  array.
+        // Remove key => value link from middle of array.
+        $link = $links[$order];
+        // Add the key => value link to the end of  array.
+        unset($links[$order]);
         $links[$order] = $link;
       }
     }

@@ -24,7 +24,8 @@ abstract class entity_pager_advice extends entity_pager_setup {
   private function check_performance() {
 
     $check_performance = FALSE;
-    $settings = $this->getSettings($this->getView());  // Get Views settings.
+    // Get Views settings.
+    $settings = $this->getSettings($this->getView());
 
     if ($settings['next_prev']['log_performance']) {
       $check_performance = TRUE;

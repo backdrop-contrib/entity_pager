@@ -56,8 +56,13 @@ function entity_pager_theme() {
 /**
  * Implements template_preprocess_hook().
  *
- * @param $vars
+ * Added a minimalistic amount of CSS to the page to style Entity Page.
+ * A minimalistic amount of CSS has deliberately only been added so it is easy
+ * to override the CSS in the theme layer. 
+ *
+ * @param $variables
+ *   An associative array of $variables passed into template.
  */
-function template_preprocess_entity_pager(&$vars) {
+function template_preprocess_entity_pager(&$variables) {
   drupal_add_css(drupal_get_path('module', 'entity_pager') . '/css/entity_pager.css');
 }

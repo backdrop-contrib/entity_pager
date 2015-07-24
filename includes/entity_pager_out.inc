@@ -24,6 +24,7 @@ class entity_pager_out extends entity_pager_advice {
    * Use this to get Entity Pager links.
    *
    * @return array|bool|void
+   *   get the results for an entity pager. 
    */
   public function get_entity_pager() {
 
@@ -143,6 +144,7 @@ class entity_pager_out extends entity_pager_advice {
    *  the view object.
    *
    * @return array|mixed|void
+   *   an array of links.
    */
   private function calculate_next_all_prev_values_from_view($entity, $view) {
 
@@ -246,6 +248,7 @@ class entity_pager_out extends entity_pager_advice {
    *  the links array to be ordered.
    *
    * @return link array.
+   *   an array of links ordered in the most appropiate way.
    */
   private function orderLinks($links) {
     // Define the most usable array order.

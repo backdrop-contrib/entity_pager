@@ -58,8 +58,10 @@ class entity_pager {
    * If no field is specified return the whole array.
    *
    * @param null $field
+   *   the field the default value is required for.
    *
    * @return bool|array|string
+   *    the value of the the field requested.
    */
   public function getDefault($field = NULL) {
 

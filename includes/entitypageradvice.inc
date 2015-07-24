@@ -22,7 +22,7 @@ abstract class EntityPagerAdvice extends EntityPagerSetup {
    * @return bool
    *   True mean check performance, false mean do not check performance.
    */
-  private function check_performance() {
+  private function checkPerformance() {
 
     $check_performance = FALSE;
     // Get Views settings.
@@ -67,7 +67,7 @@ abstract class EntityPagerAdvice extends EntityPagerSetup {
    */
   protected function runAdviceLogic($advice_type, $issue) {
 
-    if ($this->check_performance()) {
+    if ($this->checkPerformance()) {
       // Log performance suggestions.
       if ($advice_type == 'quantity') {
         // Coding note:  ideally nested 'if' statements should be avoided,

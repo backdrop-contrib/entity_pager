@@ -171,7 +171,7 @@ class EntityPagerOut extends EntityPagerAdvice {
       'prev' => $settings['next_prev']['link_prev'],
     );
 
-    $this->run_advice_logic('quantity', 'Consider caching View result');
+    $this->runAdviceLogic('quantity', 'Consider caching View result');
 
     // Set defaults for output.
     $links = array(
@@ -212,7 +212,7 @@ class EntityPagerOut extends EntityPagerAdvice {
     }
 
     if (!$match) {
-      $this->run_advice_logic('no-records', 'No results in View');
+      $this->runAdviceLogic('no-records', 'No results in View');
       // Return nothing.
       return FALSE;
     }

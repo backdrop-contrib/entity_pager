@@ -2,7 +2,7 @@
 
 /**
  * @file
- * entity-pager.tpl.php
+ * Entity-pager.tpl.php.
  *
  * Adds an Entity Pager:
  * E.g.

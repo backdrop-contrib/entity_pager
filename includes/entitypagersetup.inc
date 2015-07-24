@@ -389,7 +389,7 @@ abstract class EntityPagerSetup extends EntityPager {
    * It is required to make the module universal, so it can process entities
    * as oppose to being hardcoded and only working for nodes.
    *
-   * @param object $entityInfo
+   * @param object $entity_info
    *   Set the Entity info object.
    */
   protected function setEntityInfo($entity_info) {

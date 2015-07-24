@@ -33,14 +33,14 @@ class EntityPagerOut extends EntityPagerAdvice {
     $settings = $this->getSettings($view);
 
     if (!$entity) {
-      $this->run_advice_logic('no-records', 'No Entity on page');
+      $this->runAdviceLogic('no-records', 'No Entity on page');
       return FALSE;
     }
 
     $entity_type = $this->getEntityInfo('entity_type');
 
     // Process to 'All' link.
-    $this->token_link(
+    $this->tokenLink(
       $entity_type,
       $entity,
       $settings['next_prev']['link_all_url'],
@@ -48,7 +48,7 @@ class EntityPagerOut extends EntityPagerAdvice {
     );
 
     // Create links for 'Next', 'All' and 'Prev' values.
-    $links = $this->calculate_next_all_prev_values_from_view($entity, $view);
+    $links = $this->calculateNextAllPrevValuesFromView($entity, $view);
 
     return $links;
   }
@@ -69,7 +69,7 @@ class EntityPagerOut extends EntityPagerAdvice {
    * @param string $title
    *   The title for the link.
    */
-  private function token_link($entity_type, $entity, $url, $title) {
+  private function tokenLink($entity_type, $entity, $url, $title) {
 
     $detokened = array();
     $detokened['url'] = token_replace($url, array($entity_type => $entity));
@@ -85,14 +85,14 @@ class EntityPagerOut extends EntityPagerAdvice {
     }
     else {
       // Entity reference process.
-      $new_url = $this->entity_ref_url_from_token($entity_type, $entity, $url);
+      $new_url = $this->entityRefUrlFromToken($entity_type, $entity, $url);
     }
     $this->setAllUrl($new_url);
     $this->setAllTitle($detokened['title']);
   }
 
   /**
-   * Process Entity Reference tokens.
+   * Process Entity Reference URL from tokens.
    *
    * If it is established the Tokens are Entity References, this method
    * converts them into useful information.
@@ -107,7 +107,7 @@ class EntityPagerOut extends EntityPagerAdvice {
    * @return bool|mixed|null|string
    *   return a url from an Entity Reference.
    */
-  protected function entity_ref_url_from_token($entity_type, $entity, $link_with_token) {
+  protected function entityRefUrlFromToken($entity_type, $entity, $link_with_token) {
 
     $link_all_url = '';
 
@@ -147,7 +147,7 @@ class EntityPagerOut extends EntityPagerAdvice {
    * @return array|bool
    *   An array of links.
    */
-  private function calculate_next_all_prev_values_from_view($entity, $view) {
+  private function calculateNextAllPrevValuesFromView($entity, $view) {
 
     // Extract the info required from the View.
     // I.e. info from Views > Format > settings.

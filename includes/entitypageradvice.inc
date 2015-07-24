@@ -65,7 +65,7 @@ abstract class EntityPagerAdvice extends EntityPagerSetup {
    * @param string $issue
    *   The specific issue.
    */
-  protected function run_advice_logic($advice_type, $issue) {
+  protected function runAdviceLogic($advice_type, $issue) {
 
     if ($this->check_performance()) {
       // Log performance suggestions.

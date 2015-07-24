@@ -42,7 +42,7 @@ abstract class EntityPagerAdvice extends EntityPagerSetup {
    * @return bool
    *   True or false on whether views chaching is used.
    */
-  private function views_caching_is_used() {
+  private function viewsCachingUsed() {
 
     $view = $this->getView();
     $cache_value = $view->query->pager->display->handler->default_display
@@ -75,7 +75,7 @@ abstract class EntityPagerAdvice extends EntityPagerSetup {
         // the logic in one manageable place. The if statements are simple
         // (single purpose) meaning they are easy to work down logically.
         if ($this->getViewResultCount() > 500) {
-          if ($this->views_caching_is_used()) {
+          if ($this->viewsCachingUsed()) {
             // Do nothing.
           }
           else {

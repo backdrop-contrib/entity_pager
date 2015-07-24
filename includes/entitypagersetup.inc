@@ -310,13 +310,13 @@ abstract class EntityPagerSetup extends EntityPager {
    */
   protected function establishEntity($view) {
 
-    $entityInfo = $this->establishEntityInfo($view);
-    $position = 1 + substr_count($entityInfo['entity_type'], '_');
+    $entity_info = $this->establishEntityInfo($view);
+    $position = 1 + substr_count($entity_info['entity_type'], '_');
     // Position is normally 1, (e.g. node/8 ), but things like taxonomy_term
     // get turned into taxonomy/term (e.g. taxonomy/term/8).
-    $entity = menu_get_object($entityInfo['entity_type'], $position);
+    $entity = menu_get_object($entity_info['entity_type'], $position);
     $this->setEntity($entity);
-    $this->setEntityInfo($entityInfo);
+    $this->setEntityInfo($entity_info);
     $this->setIdFieldName();
   }
 
@@ -341,7 +341,7 @@ abstract class EntityPagerSetup extends EntityPager {
    */
   protected function establishEntityInfo($view) {
 
-    $entityInfo = NULL;
+    $entity_info = NULL;
     $entity_keys = $this->getEntityKeys();
 
     $view_fields = $view->query->fields;
@@ -351,12 +351,12 @@ abstract class EntityPagerSetup extends EntityPager {
 
       if (in_array($view_field['field'], $entity_keys)) {
         $entity_flip = array_flip($entity_keys);
-        $entityInfo = $view_field;
-        $entityInfo['entity_type'] = $entity_flip[$view_field['field']];
+        $entity_info = $view_field;
+        $entity_info['entity_type'] = $entity_flip[$view_field['field']];
         break;
       }
     }
-    return $entityInfo;
+    return $entity_info;
   }
 
   /**
@@ -392,8 +392,8 @@ abstract class EntityPagerSetup extends EntityPager {
    * @param object $entityInfo
    *   Set the Entity info object.
    */
-  protected function setEntityInfo($entityInfo) {
-    $this->entityInfo = $entityInfo;
+  protected function setEntityInfo($entity_info) {
+    $this->entityInfo = $entity_info;
   }
 
   /**
@@ -412,16 +412,16 @@ abstract class EntityPagerSetup extends EntityPager {
    */
   public function getEntityInfo($field = NULL) {
 
-    $entityInfo = FALSE;
+    $entity_info = FALSE;
     if (is_null($field)) {
       // The whole array.
-      $entityInfo = $this->entityInfo;
+      $entity_info = $this->entityInfo;
     }
     elseif (isset($this->entityInfo[$field])) {
       // A specific field.
-      $entityInfo = $this->entityInfo[$field];
+      $entity_info = $this->entityInfo[$field];
     }
-    return $entityInfo;
+    return $entity_info;
   }
 
 }

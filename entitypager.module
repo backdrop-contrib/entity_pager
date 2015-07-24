@@ -39,7 +39,7 @@ function entitypager_views_api() {
 }
 
 /**
- * Implements hook_theme.
+ * Implements hook_theme().
  */
 function entitypager_theme() {
 

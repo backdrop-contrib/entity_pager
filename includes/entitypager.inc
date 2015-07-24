@@ -6,11 +6,11 @@
  */
 
 /**
- * Class entity_pager.
+ * Class entitypager.
  *
- * Provides a base Class setup for the entity_pager_out Class.
- * This Class contains house keeping functions for entity_pager.
- * entity_pager_out inherits this class and does the Business Logic.
+ * Provides a base Class setup for the entitypager_out Class.
+ * This Class contains house keeping functions for entitypager.
+ * entitypager_out inherits this class and does the Business Logic.
  *
  * The main things that happening in this class:
  *
@@ -24,14 +24,14 @@
  * 3) the specific information of interest for the webpage is then gathered up
  * and made convenient to use & quick to access.  This is done so it is easy
  * to work with when constructing the Business Logic in the sub-class
- * entity_pager_out.
+ * entitypager_out.
  */
-class entity_pager {
+class EntityPager {
 
   protected $default;
 
   /**
-   * The constuctor for entity_pager class.
+   * The constuctor for entitypager class.
    */
   public function __construct() {
     $this->setDefaults();

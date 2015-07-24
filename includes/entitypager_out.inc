@@ -2,20 +2,20 @@
 
 /**
  * @file
- * Provides the Business Logic for the entity_pager module.
+ * Provides the Business Logic for the entitypager module.
  */
 
 /**
- * Class entity_pager_out.
+ * Class entitypager_out.
  *
  * The business logic class.
  *
- * The main class for the entity_pager module that does Business Logic.
+ * The main class for the entitypager module that does Business Logic.
  * For best practice Business Logic is kept separate from general Class
- * maintenance tasks. This class extents entity_pager which performs
+ * maintenance tasks. This class extents entitypager which performs
  * general Class duties.
  */
-class entity_pager_out extends entity_pager_advice {
+class EntityPager_out extends EntityPager_advice {
 
   /**
    * Entity Pager return links.
@@ -26,7 +26,7 @@ class entity_pager_out extends entity_pager_advice {
    * @return array|bool|void
    *   Get the results for an entity pager.
    */
-  public function get_entity_pager() {
+  public function get_entitypager() {
 
     $entity = $this->getEntity();
     $view = $this->getView();

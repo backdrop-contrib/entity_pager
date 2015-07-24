@@ -10,7 +10,7 @@
  *
  * @ingroup views_style_plugins
  */
-class views_plugin_style_entity_pager extends views_plugin_style {
+class views_plugin_style_entitypager extends views_plugin_style {
 
   /**
    * Render the display in this style.
@@ -21,11 +21,11 @@ class views_plugin_style_entity_pager extends views_plugin_style {
       return;
     }
 
-    $pager = new entity_pager_out($this->view);
-    if ($links = $pager->get_entity_pager()) {
+    $pager = new entitypager_out($this->view);
+    if ($links = $pager->get_entitypager()) {
       // Only show if it has contents.
       $variables['links'] = $links;
-      return theme('entity_pager', $variables);
+      return theme('entitypager', $variables);
     };
   }
 
@@ -41,7 +41,7 @@ class views_plugin_style_entity_pager extends views_plugin_style {
 
     parent::options_form($form, $form_state);
 
-    $default = new entity_pager();
+    $default = new EntityPager();
 
     // Setup an options form.
     $form['next_prev'] = array(

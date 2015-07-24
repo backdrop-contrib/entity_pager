@@ -8,9 +8,9 @@
 /**
  * Implements hook_help().
  */
-function entity_pager_help($path, $arg) {
+function entitypager_help($path, $arg) {
   switch ($path) {
-    case 'admin/help#entity_pager':
+    case 'admin/help#entitypager':
       $output = '';
       $output .= '<h3>' . t('About') . '</h3>';
       $output .= '<p>' . t('Provides next and previous navigation on entities.') . '<p>';
@@ -31,24 +31,24 @@ function entity_pager_help($path, $arg) {
  *
  * This one is used as the base to reduce errors when updating.
  */
-function entity_pager_views_api() {
+function entitypager_views_api() {
   return array(
     'api' => '3.0',
-    'path' => drupal_get_path('module', 'entity_pager') . '/views',
+    'path' => drupal_get_path('module', 'entitypager') . '/views',
   );
 }
 
 /**
  * Implements hook_theme.
  */
-function entity_pager_theme() {
+function entitypager_theme() {
 
   $themes = array();
-  $themes['entity_pager'] = array(
+  $themes['entitypager'] = array(
     'variables' => array(
       'list' => array(),
     ),
-    'template' => 'entity-pager',
+    'template' => 'entitypager',
   );
   return $themes;
 }
@@ -63,6 +63,6 @@ function entity_pager_theme() {
  * @param array $variables
  *   An associative array of $variables passed into template.
  */
-function template_preprocess_entity_pager(array &$variables) {
-  drupal_add_css(drupal_get_path('module', 'entity_pager') . '/css/entity_pager.css');
+function template_preprocess_entitypager(array &$variables) {
+  drupal_add_css(drupal_get_path('module', 'entitypager') . '/css/entitypager.css');
 }

@@ -7,8 +7,8 @@ php = 5.2
 dependencies[] = views
 dependencies[] = token
 
-files[] = views/plugins/views_plugin_style_entity_pager.inc
-files[] = includes/entity_pager.inc
-files[] = includes/entity_pager_setup.inc
-files[] = includes/entity_pager_advice.inc
-files[] = includes/entity_pager_out.inc
+files[] = views/plugins/views_plugin_style_entitypager.inc
+files[] = includes/entitypager.inc
+files[] = includes/entitypager_setup.inc
+files[] = includes/entitypager_advice.inc
+files[] = includes/entitypager_out.inc

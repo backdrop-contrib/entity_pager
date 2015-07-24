@@ -58,9 +58,9 @@ abstract class entity_pager_setup extends entity_pager {
    *
    * A generic setter to set the values of a field.
    *
-   * @param text $field
+   * @param string $field
    *   The field to set.
-   * @param text $value
+   * @param string $value
    *   The value of the field to set.
    */
   protected function setField($field, $value) {

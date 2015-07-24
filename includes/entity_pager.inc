@@ -25,12 +25,14 @@
  * and made convenient to use & quick to access.  This is done so it is easy
  * to work with when constructing the Business Logic in the sub-class
  * entity_pager_out.
- *
  */
 class entity_pager {
 
   protected $default;
 
+  /**
+   * The constuctor for entity_pager class.
+   */
   public function __construct() {
     $this->setDefaults();
   }
@@ -57,7 +59,7 @@ class entity_pager {
    * If a field is specified return just that field value.
    * If no field is specified return the whole array.
    *
-   * @param null $field
+   * @param text|null $field
    *   the field the default value is required for.
    *
    * @return bool|array|string

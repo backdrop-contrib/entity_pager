@@ -28,7 +28,7 @@
  */
 abstract class entity_pager_setup extends entity_pager {
 
-  // e.g. $node
+  // e.g. $node.
   protected $entity;
   // The information returned from the View.
   protected $view;
@@ -42,7 +42,7 @@ abstract class entity_pager_setup extends entity_pager {
    *
    * The construct class for a the class entity_pager_setup.
    *
-   * @param $view
+   * @param object $view
    *   the view object.
    */
   public function __construct($view) {
@@ -58,9 +58,9 @@ abstract class entity_pager_setup extends entity_pager {
    *
    * A generic setter to set the values of a field.
    *
-   * @param $field
+   * @param text $field
    *   the field to set.
-   * @param $value
+   * @param text $value
    *   the value of the field to set.
    */
   protected function setField($field, $value) {
@@ -72,7 +72,7 @@ abstract class entity_pager_setup extends entity_pager {
    *
    * A generic getter to get the values of a field.
    *
-   * @param $field
+   * @param text $field
    *   get a specific field.
    *
    * @return bool
@@ -91,7 +91,7 @@ abstract class entity_pager_setup extends entity_pager {
    *
    * Store the entity object. e.g. $node or $user etc..
    *
-   * @param $entity
+   * @param object $entity
    *   set the entity object.
    */
   public function setEntity($entity) {
@@ -103,7 +103,7 @@ abstract class entity_pager_setup extends entity_pager {
    *
    * Get the entity object. e.g. $node or $user etc..
    *
-   * @return $entity
+   * @return object $entity
    *   an the entity object.
    */
   public function getEntity() {
@@ -115,7 +115,7 @@ abstract class entity_pager_setup extends entity_pager {
    *
    * Set the View object to be processed.
    *
-   * @param $view
+   * @param object $view
    *   the view object.
    */
   public function setView($view) {
@@ -128,7 +128,8 @@ abstract class entity_pager_setup extends entity_pager {
    *
    * Get the View object to be processed.
    *
-   * @return mixed
+   * @return object $view
+   *   the View object.
    */
   public function getView() {
     return $this->view;
@@ -143,11 +144,11 @@ abstract class entity_pager_setup extends entity_pager {
    * function uses the part of the view data that is to be consistently used
    * to get the options settings.
    *
-   * @param $view
+   * @param object $view
    *  the view object.
    *
    * @return array
-   *   the settings the were selected in the view.
+   *   the settings the were selected in the View.
    */
   public function getSettings($view) {
     if (!isset($view->style_plugin->options['next_prev'])) {
@@ -161,10 +162,10 @@ abstract class entity_pager_setup extends entity_pager {
    *
    * Get the part of the View object that contains the Views result data.
    *
-   * @param $view
+   * @param object $view
    *  the view object.
    *
-   * @return mixed
+   * @return array
    *  the view result.
    */
   public function getViewResult($view) {
@@ -219,7 +220,7 @@ abstract class entity_pager_setup extends entity_pager {
    * 'set' choices.  This IDE prompting makes it easy for other developers
    * to work with the code quickly and easily on this Open Source project.
    *
-   * @param $url
+   * @param text $url
    *   set the value that was set in the options of the View for the All Title.
    */
   public function setAllUrl($url) {
@@ -231,7 +232,7 @@ abstract class entity_pager_setup extends entity_pager {
    *
    * For more info see description for: function setAllUrl($url).
    *
-   * @param $title
+   * @param text $title
    *   set the value that was set in the options of the View for the All Title.
    */
   public function setAllTitle($title) {
@@ -305,7 +306,7 @@ abstract class entity_pager_setup extends entity_pager {
    * Then store all the information that has been worked out so it can be
    * conveniently and efficiently used by this Class.
    *
-   * @param $view
+   * @param object $view
    *   the view object.
    */
   protected function establishEntity($view) {
@@ -333,7 +334,7 @@ abstract class entity_pager_setup extends entity_pager {
    *  table       = "users"
    *  alias       = "uid"
    *
-   * @param $view
+   * @param object $view
    *   the View object.
    *
    * @return array
@@ -388,7 +389,7 @@ abstract class entity_pager_setup extends entity_pager {
    * It is required to make the module universal, so it can process entities
    * as oppose to being hardcoded and only working for nodes.
    *
-   * @param $entity_info
+   * @param object $entity_info
    *   set the Entity info object.
    */
   protected function setEntityInfo($entity_info) {
@@ -403,10 +404,10 @@ abstract class entity_pager_setup extends entity_pager {
    * Information. If a $field is entered only information on that field
    * is returned.
    *
-   * @param null $field
+   * @param text|null $field
    *   Either leave as null for the whole object or specify an individual field.
    *
-   * @return bool | array $entity_info
+   * @return bool|object $entity_info
    *   Get the Entity Info object.
    */
   public function getEntityInfo($field = NULL) {

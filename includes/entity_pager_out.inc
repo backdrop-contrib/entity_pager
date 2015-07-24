@@ -24,7 +24,7 @@ class entity_pager_out extends entity_pager_advice {
    * Use this to get Entity Pager links.
    *
    * @return array|bool|void
-   *   get the results for an entity pager. 
+   *   get the results for an entity pager.
    */
   public function get_entity_pager() {
 
@@ -60,14 +60,14 @@ class entity_pager_out extends entity_pager_advice {
    * 'Entity Pager' section.  This function processes the values added.
    * E.g. it can turn things like entity references into Titles with links.
    *
-   * @param $entity_type
-   *  the type of entity.
-   * @param $entity
-   *  the entity object.
-   * @param $url
-   *  the url to be added to link.
-   * @param $title
-   *  the title for the link.
+   * @param text $entity_type
+   *   the type of entity.
+   * @param object $entity
+   *   the entity object.
+   * @param text $url
+   *   the url to be added to link.
+   * @param text $title
+   *   the title for the link.
    */
   private function token_link($entity_type, $entity, $url, $title) {
 
@@ -98,11 +98,11 @@ class entity_pager_out extends entity_pager_advice {
    * converts them into useful information.
    *
    * @param $entity_type
-   *  the type of entity.
+   *   the type of entity.
    * @param $entity
-   *  the entity object.
+   *   the entity object.
    * @param $link_with_token
-   *  the link with the token in.
+   *   the link with the token in.
    *
    * @return bool|mixed|null|string
    */
@@ -139,9 +139,9 @@ class entity_pager_out extends entity_pager_advice {
    *    < prev   All  next >
    *
    * @param $entity
-   *  the entity object.
+   *   the entity object.
    * @param $view
-   *  the view object.
+   *   the view object.
    *
    * @return array|mixed|void
    *   an array of links.
@@ -238,17 +238,17 @@ class entity_pager_out extends entity_pager_advice {
   }
 
   /**
-   * Order links
+   * Order links.
    *
    * Put links (and count) in the most appropriate order.
    * If extra links have been added from the 4 in the orders array below,
    * they will still appear in the links array.
    *
-   * @param $links
-   *  the links array to be ordered.
+   * @param array $links
+   *   the links array to be ordered.
    *
-   * @return link array.
-   *   an array of links ordered in the most appropiate way.
+   * @return array link.
+   *   an array of links ordered in the most appropriate way.
    */
   private function orderLinks($links) {
     // Define the most usable array order.

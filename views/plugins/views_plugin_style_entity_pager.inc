@@ -73,8 +73,7 @@ class views_plugin_style_entity_pager extends views_plugin_style {
 
     $form['next_prev']['link_all_url'] = array(
       '#title' => t('List All URL'),
-      '#description' =>
-        t('The <strong>URL</strong> of the listing Link.<br>
+      '#description' => t('The <strong>URL</strong> of the listing Link.<br>
           Examples include:
           <ul>
               <li>the URL of a Views listing page of the Entities.</li>
@@ -92,8 +91,8 @@ class views_plugin_style_entity_pager extends views_plugin_style {
 
     $form['next_prev']['link_all_text'] = array(
       '#title' => t('List All label'),
-      '#description' =>
-        t("The <strong>text</strong> to display for the <strong>List All URL.
+      '#description' => t("The <strong>text</strong>
+          to display for the <strong>List All URL.
           </strong>
           <ul>
               <li>When an <strong>entity reference</strong> is used in
@@ -102,7 +101,7 @@ class views_plugin_style_entity_pager extends views_plugin_style {
               <strong>Entity Title</strong> will automatically be displayed.
               </li>
           </ul>"
-        ),
+      ),
       '#type' => 'textfield',
       '#default_value' => (isset($this->options['next_prev']['link_all_text'])
         ? $this->options['next_prev']['link_all_text']

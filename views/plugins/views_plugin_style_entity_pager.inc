@@ -55,20 +55,18 @@ class views_plugin_style_entity_pager extends views_plugin_style {
       '#title' => t('Next label'),
       '#description' => t('The text to display for the Next link.'),
       '#type' => 'textfield',
-      '#default_value' =>
-        (isset($this->options['next_prev']['link_next'])
-          ? $this->options['next_prev']['link_next']
-          : $default->getDefault('link_next')),
+      '#default_value' => (isset($this->options['next_prev']['link_next'])
+        ? $this->options['next_prev']['link_next']
+        : $default->getDefault('link_next')),
     );
 
     $form['next_prev']['link_prev'] = array(
       '#title' => t('Previous label'),
       '#description' => t('The text to display for the Previous link.'),
       '#type' => 'textfield',
-      '#default_value' =>
-        (isset($this->options['next_prev']['link_prev'])
-          ? $this->options['next_prev']['link_prev']
-          : $default->getDefault('link_prev')),
+      '#default_value' => (isset($this->options['next_prev']['link_prev'])
+        ? $this->options['next_prev']['link_prev']
+        : $default->getDefault('link_prev')),
     );
 
     $form['next_prev']['link_all_url'] = array(
@@ -85,10 +83,9 @@ class views_plugin_style_entity_pager extends views_plugin_style {
               has one.  e.g. [node:field_company]</li>
           </ul>', array('@front' => '<front>')),
       '#type' => 'textfield',
-      '#default_value' =>
-        (isset($this->options['next_prev']['link_all_url'])
-          ? $this->options['next_prev']['link_all_url']
-          : $default->getDefault('link_all_url')),
+      '#default_value' => (isset($this->options['next_prev']['link_all_url'])
+        ? $this->options['next_prev']['link_all_url']
+        : $default->getDefault('link_all_url')),
     );
 
     $form['next_prev']['link_all_text'] = array(
@@ -105,10 +102,9 @@ class views_plugin_style_entity_pager extends views_plugin_style {
           </ul>"
         ),
       '#type' => 'textfield',
-      '#default_value' =>
-        (isset($this->options['next_prev']['link_all_text'])
-          ? $this->options['next_prev']['link_all_text']
-          : $default->getDefault('link_all_text')),
+      '#default_value' => (isset($this->options['next_prev']['link_all_text'])
+        ? $this->options['next_prev']['link_all_text']
+        : $default->getDefault('link_all_text')),
     );
 
     $form['next_prev']['display_count'] = array(

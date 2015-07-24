@@ -26,7 +26,7 @@
  * to work with when constructing the Business Logic in the sub-class
  * entitypager_out.
  */
-abstract class EntityPager_setup extends EntityPager {
+abstract class EntityPagerSetup extends EntityPager {
 
   // E.g. $node.
   protected $entity;

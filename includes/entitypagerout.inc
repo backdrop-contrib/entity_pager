@@ -15,7 +15,7 @@
  * maintenance tasks. This class extents entitypager which performs
  * general Class duties.
  */
-class EntityPager_out extends EntityPager_advice {
+class EntityPagerOut extends EntityPagerAdvice {
 
   /**
    * Entity Pager return links.

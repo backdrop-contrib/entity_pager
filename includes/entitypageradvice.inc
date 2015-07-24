@@ -6,12 +6,12 @@
  */
 
 /**
- * Class entitypager_advice.
+ * Class EntityPagerAdvice.
  *
  * Provides a central and compact section of code where all performance advice
  * logic and messages are handled.
  */
-abstract class EntityPager_advice extends EntityPager_setup {
+abstract class EntityPagerAdvice extends EntityPagerSetup {
 
   /**
    * Check performance.

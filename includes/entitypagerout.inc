@@ -192,7 +192,7 @@ class EntityPagerOut extends EntityPagerAdvice {
       $n['cur'] = $result->$field_name;
 
       if ($next) {
-        $links['next'] = l($n['next'], 
+        $links['next'] = l($n['next'],
           $entity_url . '/' . $result->$field_name);
         break;
       }

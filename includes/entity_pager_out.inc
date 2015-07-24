@@ -24,7 +24,7 @@ class entity_pager_out extends entity_pager_advice {
    * Use this to get Entity Pager links.
    *
    * @return array|bool|void
-   *   get the results for an entity pager.
+   *   Get the results for an entity pager.
    */
   public function get_entity_pager() {
 
@@ -61,13 +61,13 @@ class entity_pager_out extends entity_pager_advice {
    * E.g. it can turn things like entity references into Titles with links.
    *
    * @param text $entity_type
-   *   the type of entity.
+   *   The type of entity.
    * @param object $entity
-   *   the entity object.
+   *   The entity object.
    * @param text $url
-   *   the url to be added to link.
+   *   The url to be added to link.
    * @param text $title
-   *   the title for the link.
+   *   The title for the link.
    */
   private function token_link($entity_type, $entity, $url, $title) {
 
@@ -98,11 +98,11 @@ class entity_pager_out extends entity_pager_advice {
    * converts them into useful information.
    *
    * @param $entity_type
-   *   the type of entity.
+   *   The type of entity.
    * @param $entity
-   *   the entity object.
+   *   The entity object.
    * @param $link_with_token
-   *   the link with the token in.
+   *   The link with the token in.
    *
    * @return bool|mixed|null|string
    */
@@ -139,12 +139,12 @@ class entity_pager_out extends entity_pager_advice {
    *    < prev   All  next >
    *
    * @param $entity
-   *   the entity object.
+   *   The entity object.
    * @param $view
-   *   the view object.
+   *   The view object.
    *
    * @return array|mixed|void
-   *   an array of links.
+   *   An array of links.
    */
   private function calculate_next_all_prev_values_from_view($entity, $view) {
 
@@ -245,10 +245,10 @@ class entity_pager_out extends entity_pager_advice {
    * they will still appear in the links array.
    *
    * @param array $links
-   *   the links array to be ordered.
+   *   The links array to be ordered.
    *
    * @return array link.
-   *   an array of links ordered in the most appropriate way.
+   *   An array of links ordered in the most appropriate way.
    */
   private function orderLinks($links) {
     // Define the most usable array order.

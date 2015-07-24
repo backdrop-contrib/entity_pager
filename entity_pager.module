@@ -60,11 +60,8 @@ function entity_pager_theme() {
  * A minimalistic amount of CSS has deliberately only been added so it is easy
  * to override the CSS in the theme layer.
  *
- * @param $variables
- *   An associative array of $variables passed into template.
- */
-/**
  * @param array $variables
+ *   An associative array of $variables passed into template.
  */
 function template_preprocess_entity_pager(&$variables) {
   drupal_add_css(drupal_get_path('module', 'entity_pager') . '/css/entity_pager.css');

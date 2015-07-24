@@ -20,7 +20,7 @@ abstract class entity_pager_advice extends entity_pager_setup {
    * see: View > Format > Settings > Log performance suggestions.
    *
    * @return bool
-   *   true mean check performance, false mean do not check performance.
+   *   True mean check performance, false mean do not check performance.
    */
   private function check_performance() {
 
@@ -40,7 +40,7 @@ abstract class entity_pager_advice extends entity_pager_setup {
    * A system state function on whether Views caching is configured on the View.
    *
    * @return bool
-   *   true or false on whether views chaching is used.
+   *   True or false on whether views chaching is used.
    */
   private function views_caching_is_used() {
 
@@ -61,9 +61,9 @@ abstract class entity_pager_advice extends entity_pager_setup {
    * Run the logic that manages performance advice.
    *
    * @param text $advice_type
-   *   the type of advice.
+   *   The type of advice.
    * @param text $issue
-   *   the specific issue.
+   *   The specific issue.
    */
   protected function run_advice_logic($advice_type, $issue) {
 
@@ -95,9 +95,9 @@ abstract class entity_pager_advice extends entity_pager_setup {
    * Create a Performance Message and log it watchdog.
    *
    * @param text $advice_type
-   *   the type of advice.
+   *   The type of advice.
    * @param text $issue
-   *   the specific issue.
+   *   The specific issue.
    */
   private function logAdvice($advice_type, $issue) {
 
@@ -116,6 +116,7 @@ abstract class entity_pager_advice extends entity_pager_setup {
             '@reason' => $issue,
           ), WATCHDOG_INFO);
         break;
+
       case 'quantity':
         watchdog('entity_pager', "Performance Advice: in the View ('@view_name'),
                 the issue ('@reason'). At the moment there are 500+ records in

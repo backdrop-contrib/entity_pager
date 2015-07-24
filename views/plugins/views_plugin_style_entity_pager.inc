@@ -32,12 +32,12 @@ class views_plugin_style_entity_pager extends views_plugin_style {
   /**
    * Options form in Views for Entity Pager.
    *
-   * @param $form
+   * @param array $form
    *   Nested array of form elements that comprise the form.
-   * @param $form_state
+   * @param array $form_state
    *   A keyed array containing the current state of the form.
    */
-  function options_form(&$form, &$form_state) {
+  public function options_form(&$form, &$form_state) {
 
     parent::options_form($form, $form_state);
 

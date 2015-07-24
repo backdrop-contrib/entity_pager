@@ -63,7 +63,7 @@ abstract class entity_pager_setup extends entity_pager {
    * @param text $value
    *   The value of the field to set.
    */
-  protected function setField($field, $value) {
+  protected function setField(text $field, text $value) {
     $this->outSettings->$field = $value;
   }
 
@@ -78,7 +78,7 @@ abstract class entity_pager_setup extends entity_pager {
    * @return bool
    *   The value of the field a specific field.
    */
-  protected function getField($field) {
+  protected function getField(text $field) {
 
     if (isset($this->outSettings->$field)) {
       return $this->outSettings->$field;
@@ -163,10 +163,10 @@ abstract class entity_pager_setup extends entity_pager {
    * Get the part of the View object that contains the Views result data.
    *
    * @param object $view
-   *  The view object.
+   *   The view object.
    *
    * @return array
-   *  The view result.
+   *   The view result.
    */
   public function getViewResult($view) {
     return $view->result;
@@ -178,6 +178,7 @@ abstract class entity_pager_setup extends entity_pager {
    * Return the part of the View object that has the count of results.
    *
    * @return int
+   *   Get the count of results.
    */
   public function getViewResultCount() {
     return $this->view->result_count;
@@ -205,7 +206,6 @@ abstract class entity_pager_setup extends entity_pager {
    *
    * @return text
    *   Get the value that was set in the options of the View for the All Title.
-   *
    */
   public function getAllTitle() {
     return $this->getField('all_title');
@@ -223,7 +223,7 @@ abstract class entity_pager_setup extends entity_pager {
    * @param text $url
    *   Set the value that was set in the options of the View for the All Title.
    */
-  public function setAllUrl($url) {
+  public function setAllUrl(text $url) {
     $this->setField('all_url', $url);
   }
 
@@ -235,7 +235,7 @@ abstract class entity_pager_setup extends entity_pager {
    * @param text $title
    *   Set the value that was set in the options of the View for the All Title.
    */
-  public function setAllTitle($title) {
+  public function setAllTitle(text $title) {
     $this->setField('all_title', $title);
   }
 
@@ -297,7 +297,7 @@ abstract class entity_pager_setup extends entity_pager {
   }
 
   /**
-   * Establish Entity
+   * Establish Entity.
    *
    * Use View result to establish the Entity type of interest.
    * i.e. a node entity or a user entity etc..
@@ -366,6 +366,7 @@ abstract class entity_pager_setup extends entity_pager {
    * E.g.
    *   node = nid
    *   user = uid
+   * etc.
    *
    * @return array
    *   Get an array of the id fields used for each Entity on the site.

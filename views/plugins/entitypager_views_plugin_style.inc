@@ -10,7 +10,7 @@
  *
  * @ingroup views_style_plugins
  */
-class views_plugin_style_entitypager extends views_plugin_style {
+class entitypager_views_plugin_style extends views_plugin_style {
 
   /**
    * Render the display in this style.

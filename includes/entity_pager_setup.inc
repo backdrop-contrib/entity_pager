@@ -41,6 +41,7 @@ abstract class entity_pager_setup extends entity_pager {
    * Setup Entity Pager with minimum values to work with.
    *
    * @param $view
+   *  the view object.
    */
   public function __construct($view) {
     // Set function to allow for dependency injection and coding best practices.
@@ -54,7 +55,9 @@ abstract class entity_pager_setup extends entity_pager {
    * Generic 'Setter' for fields.
    *
    * @param $field
+   *  the field to set.
    * @param $value
+   *  the value of the field to set.
    */
   protected function setField($field, $value) {
     $this->outSettings->$field = $value;
@@ -64,6 +67,7 @@ abstract class entity_pager_setup extends entity_pager {
    * Generic 'Getter' for fields.
    *
    * @param $field
+   *  get a specific field.
    *
    * @return bool
    */
@@ -126,6 +130,7 @@ abstract class entity_pager_setup extends entity_pager {
    * to get the options settings.
    *
    * @param $view
+   *  the view object.
    *
    * @return mixed
    */
@@ -142,8 +147,10 @@ abstract class entity_pager_setup extends entity_pager {
    * Get the part of the View object that contains the Views result data.
    *
    * @param $view
+   *  the view object.
    *
    * @return mixed
+   *  the view result.
    */
   public function getViewResult($view) {
     return $view->result;
@@ -179,7 +186,7 @@ abstract class entity_pager_setup extends entity_pager {
    *
    * Form more information see comments about: getAllUrl().
    *
-   * @return mixed
+   * @return text
    */
   public function getAllTitle() {
     return $this->getField('all_title');
@@ -301,6 +308,7 @@ abstract class entity_pager_setup extends entity_pager {
    *  alias       = "uid"
    *
    * @param $view
+   *  the view object.
    *
    * @return mixed
    */

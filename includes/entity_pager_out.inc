@@ -60,9 +60,13 @@ class entity_pager_out extends entity_pager_advice {
    * E.g. it can turn things like entity references into Titles with links.
    *
    * @param $entity_type
+   *  the type of entity.
    * @param $entity
+   *  the entity object.
    * @param $url
+   *  the url to be added to link.
    * @param $title
+   *  the title for the link.
    */
   private function token_link($entity_type, $entity, $url, $title) {
 
@@ -93,8 +97,11 @@ class entity_pager_out extends entity_pager_advice {
    * converts them into useful information.
    *
    * @param $entity_type
+   *  the type of entity.
    * @param $entity
+   *  the entity object.
    * @param $link_with_token
+   *  the link with the token in.
    *
    * @return bool|mixed|null|string
    */
@@ -131,7 +138,9 @@ class entity_pager_out extends entity_pager_advice {
    *    < prev   All  next >
    *
    * @param $entity
+   *  the entity object.
    * @param $view
+   *  the view object.
    *
    * @return array|mixed|void
    */
@@ -234,8 +243,9 @@ class entity_pager_out extends entity_pager_advice {
    * they will still appear in the links array.
    *
    * @param $links
+   *  the links array to be ordered.
    *
-   * @return mixed
+   * @return link array.
    */
   private function orderLinks($links) {
     // Define the most usable array order.

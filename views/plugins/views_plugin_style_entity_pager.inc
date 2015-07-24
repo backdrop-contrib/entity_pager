@@ -15,7 +15,7 @@ class views_plugin_style_entity_pager extends views_plugin_style {
   /**
    * Render the display in this style.
    */
-  function render() {
+  public function render() {
     if ($this->uses_row_plugin() && empty($this->row_plugin)) {
       debug('views_plugin_style_default: Missing row plugin');
       return;
@@ -33,7 +33,9 @@ class views_plugin_style_entity_pager extends views_plugin_style {
    * Options form in Views for Entity Pager.
    *
    * @param $form
+   *   Nested array of form elements that comprise the form.
    * @param $form_state
+   *   A keyed array containing the current state of the form.
    */
   function options_form(&$form, &$form_state) {
 

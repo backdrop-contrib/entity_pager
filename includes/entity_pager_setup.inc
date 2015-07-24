@@ -63,7 +63,7 @@ abstract class entity_pager_setup extends entity_pager {
    * @param text $value
    *   The value of the field to set.
    */
-  protected function setField(text $field, text $value) {
+  protected function setField($field, $value) {
     $this->outSettings->$field = $value;
   }
 
@@ -78,7 +78,7 @@ abstract class entity_pager_setup extends entity_pager {
    * @return bool
    *   The value of the field a specific field.
    */
-  protected function getField(text $field) {
+  protected function getField($field) {
 
     if (isset($this->outSettings->$field)) {
       return $this->outSettings->$field;
@@ -220,10 +220,10 @@ abstract class entity_pager_setup extends entity_pager {
    * 'set' choices.  This IDE prompting makes it easy for other developers
    * to work with the code quickly and easily on this Open Source project.
    *
-   * @param text $url
+   * @param string $url
    *   Set the value that was set in the options of the View for the All Title.
    */
-  public function setAllUrl(text $url) {
+  public function setAllUrl($url) {
     $this->setField('all_url', $url);
   }
 
@@ -232,10 +232,10 @@ abstract class entity_pager_setup extends entity_pager {
    *
    * For more info see description for: function setAllUrl($url).
    *
-   * @param text $title
+   * @param string $title
    *   Set the value that was set in the options of the View for the All Title.
    */
-  public function setAllTitle(text $title) {
+  public function setAllTitle($title) {
     $this->setField('all_title', $title);
   }
 

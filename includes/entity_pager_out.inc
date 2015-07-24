@@ -64,12 +64,12 @@ class entity_pager_out extends entity_pager_advice {
    *   The type of entity.
    * @param object $entity
    *   The entity object.
-   * @param text $url
+   * @param string $url
    *   The url to be added to link.
    * @param text $title
    *   The title for the link.
    */
-  private function token_link(text $entity_type, object $entity, text $url, text $title) {
+  private function token_link($entity_type, $entity, $url, $title) {
 
     $detokened = array();
     $detokened['url'] = token_replace($url, array($entity_type => $entity));
@@ -106,7 +106,7 @@ class entity_pager_out extends entity_pager_advice {
    *
    * @return bool|mixed|null|string
    */
-  protected function entity_ref_url_from_token(text $entity_type, object $entity, text $link_with_token) {
+  protected function entity_ref_url_from_token($entity_type, $entity, $link_with_token) {
 
     $link_all_url = '';
 
@@ -146,7 +146,7 @@ class entity_pager_out extends entity_pager_advice {
    * @return array|mixed|void
    *   An array of links.
    */
-  private function calculate_next_all_prev_values_from_view(object $entity, object $view) {
+  private function calculate_next_all_prev_values_from_view($entity, $view) {
 
     // Extract the info required from the View.
     // I.e. info from Views > Format > settings.

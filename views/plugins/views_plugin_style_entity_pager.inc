@@ -37,7 +37,7 @@ class views_plugin_style_entity_pager extends views_plugin_style {
    * @param array $form_state
    *   A keyed array containing the current state of the form.
    */
-  public function options_form(array &$form, array &$form_state) {
+  public function options_form(&$form, &$form_state) {
 
     parent::options_form($form, $form_state);
 

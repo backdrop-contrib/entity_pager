@@ -10,7 +10,7 @@
  *
  * @ingroup views_style_plugins
  */
-class entitypager_views_plugin_style extends views_plugin_style {
+class EntityPagerViewsPluginStyle extends views_plugin_style {
 
   /**
    * Render the display in this style.
@@ -32,9 +32,9 @@ class entitypager_views_plugin_style extends views_plugin_style {
   /**
    * Options form in Views for Entity Pager.
    *
-   * @param $form
+   * @param array $form
    *   Nested array of form elements that comprise the form.
-   * @param $form_state
+   * @param array $form_state
    *   A keyed array containing the current state of the form.
    */
   public function options_form(&$form, &$form_state) {

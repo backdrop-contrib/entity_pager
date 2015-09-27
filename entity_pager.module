@@ -12,16 +12,15 @@ function entity_pager_help($path, $arg) {
   switch ($path) {
     case 'admin/help#entity_pager':
       $output = '';
-      $output .= '<h3>' . t('About') . '</h3>';
-      $output .= '<p>' . t('Provides next and previous navigation on entities.') . '<p>';
-      $output .= '<p> &nbsp ' . t('e.g.') . '<p>';
-      $output .= '<p> &nbsp ' . t('< prev') . ' &nbsp ' . t('All') . ' &nbsp ' . t('next >') . '<p>';
-      $output .= '<p>' . t('You can add multiple different navigation blocks on the same entity. This module combines Views, Blocks, Tokens and has its own internal intelligent advice system giving tips that are published to Watchdog (optionally). It is designed to run fast with the minimum of processing.');
-      $output .= '<p>' . t('It is simple to use, allowing you can create Navigation blocks in a few seconds. For more complex pagers, it can combine with the Entity Reference module to create generic sub-navigation on related entities.');
-      $output .= '<p> &nbsp ' . t('e.g. navigate through a Brands products or go back to the Brand page itself.') . '<p>';
-      $output .= '<p> &nbsp ' . t('< prev') . ' &nbsp ' . t('Pepsi') . ' &nbsp ' . t('next >') . '<p>';
-
-      $output .= '<p>' . t('see demonstration video at:  <a href="https://youtu.be/oJUcjKLz8ls" title="Entity Pager module on YouTube" rel="nofollow">Entity Pager module on YouTube</a>');
+      $output .= t('<h3>About</h3>');
+      $output .= t('<p>Provides next and previous navigation on entities.<p>');
+      $output .= t('<p> &nbsp e.g.<p>');
+      $output .= t('<p> &nbsp < prev &nbsp All &nbsp next ><p>');
+      $output .= t('<p>You can add multiple different navigation blocks on the same entity. This module combines Views, Blocks, Tokens and has its own internal intelligent advice system giving tips that are published to Watchdog (optionally). It is designed to run fast with the minimum of processing.</p>');
+      $output .= t('<p>It is simple to use, allowing you can create Navigation blocks in a few seconds. For more complex pagers, it can combine with the Entity Reference module to create generic sub-navigation on related entities.</p>');
+      $output .= t('<p> &nbsp e.g. navigate through a Brands products or go back to the Brand page itself.</p>');
+      $output .= t('<p> &nbsp < prev &nbsp Pepsi &nbsp next ></p>');
+      $output .= t('<p>see demonstration video at:  <a href="https://youtu.be/oJUcjKLz8ls" title="Entity Pager module on YouTube" rel="nofollow">Entity Pager module on YouTube</a>');
       return $output;
   }
 }

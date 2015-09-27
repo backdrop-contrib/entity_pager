@@ -15,7 +15,7 @@ function entity_pager_views_plugins() {
       'entity_pager' => array(
         'title' => t('Entity Pager'),
         'help' => t('Displays extra information on a Entity such as Next and Previous links'),
-        'handler' => 'entity_pager_views_plugin_style',
+        'handler' => 'EntityPagerViewsPluginStyle',
         'theme' => 'views_view_table',
         'uses row plugin' => FALSE,
         'uses row class' => TRUE,

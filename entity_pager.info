@@ -9,6 +9,6 @@ dependencies[] = token
 
 files[] = views/plugins/entity_pager_views_plugin_style.inc
 files[] = includes/entitypager.inc
-files[] = includes/EntityPagerSetup.inc
-files[] = includes/EntityPagerAdvice.inc
-files[] = includes/EntityPagerOut.inc
+files[] = includes/entitypagersetup.inc
+files[] = includes/entitypageradvice.inc
+files[] = includes/entitypagerout.inc

@@ -105,7 +105,7 @@ abstract class EntityPagerAdvice extends EntityPagerSetup {
 
     switch ($advice_type) {
       case 'no-records':
-        watchdog('entitypager', "Performance Advice: in the View ('@view_name'),
+        watchdog('entity_pager', "Performance Advice: in the View ('@view_name'),
                 the issue ('@reason'), means you are needlessly attempting to
                 displaying an empty Entity Pager block on this page.
                 To ignore this advice, you can turn this alert off at:
@@ -118,7 +118,7 @@ abstract class EntityPagerAdvice extends EntityPagerSetup {
         break;
 
       case 'quantity':
-        watchdog('entitypager', "Performance Advice: in the View ('@view_name'),
+        watchdog('entity_pager', "Performance Advice: in the View ('@view_name'),
                 the issue ('@reason'). At the moment there are 500+ records in
                 your pager. The Entity Pager module is constructed to be fast
                 keeping processing to a minimum, that said, it might still be a

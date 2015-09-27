@@ -10,7 +10,7 @@
  *          5 of 12
  *
  * The list of items are presented next to each other in a usable way
- * (see e.g. above) using minimalist amount of CSS see: entitypager.css.
+ * (see e.g. above) using minimalist amount of CSS see: entity_pager.css.
  *
  * Default variables:
  *
@@ -23,9 +23,9 @@
  */
 
 ?>
-<ul class="entitypager">
+<ul class="entity_pager">
   <?php foreach ($links as $key => $link): ?>
-    <li class="entitypager_<?php print $key; ?>">
+    <li class="entity_pager_<?php print $key; ?>">
       <?php print $link ?>
     </li>
   <?php endforeach; ?>

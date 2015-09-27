@@ -8,14 +8,14 @@
 /**
  * Implements hook_views_plugins().
  */
-function entitypager_views_plugins() {
+function entity_pager_views_plugins() {
   $plugins = array(
     // Display, style, row, argument default, argument validator and access.
     'style' => array(
-      'entitypager' => array(
+      'entity_pager' => array(
         'title' => t('Entity Pager'),
         'help' => t('Displays extra information on a Entity such as Next and Previous links'),
-        'handler' => 'entitypagerviewspluginstyle',
+        'handler' => 'EntityPagerViewsPluginStyle',
         'theme' => 'views_view_table',
         'uses row plugin' => FALSE,
         'uses row class' => TRUE,

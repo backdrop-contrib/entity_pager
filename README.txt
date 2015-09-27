@@ -1,6 +1,6 @@
 
 =======================================================
-================|  Description |=======================
+=============|  Description  |=========================
 =======================================================
 
 Provides next and previous navigation on entities.
@@ -22,14 +22,14 @@ e.g. navigate through a Brands products or go back to the Brand page itself.
 see: https://youtu.be/oJUcjKLz8ls
 
 =======================================================
-================|  Installation  |=====================
+=============|  Installation  |========================
 =======================================================
 
 Install this Drupal module as usual, see http://drupal.org/node/895232 for
 further information.
 
 =======================================================
-================|  Instructions |======================
+=============|  Instructions  |========================
 =======================================================
 
 This module works on any Entity, but for simplicity these instructions will
@@ -104,7 +104,17 @@ of 'nid' use 'uid'.
 http://www.jmokay.com/drupal/entity-pager-module
 
 =======================================================
-================|    Author     |======================
+=========|  Demonstration View Block |=================
+=======================================================
+
+When turning on this module an Entity Pager demonstration View block is
+created called: Entity Pager Example.
+
+Enable this block in a region of your theme on a page with a node on. This
+will display an Entity Pager block for nodes.
+
+=======================================================
+=========|    Author     |=============================
 =======================================================
 
 James Lawson

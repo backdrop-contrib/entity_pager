@@ -2,17 +2,17 @@
 
 /**
  * @file
- * Provides the Business Logic for the entitypager module.
+ * Provides the Business Logic for the EntityPager module.
  */
 
 /**
- * Class entitypager_out.
+ * Class EntityPagerOut.
  *
  * The business logic class.
  *
- * The main class for the entitypager module that does Business Logic.
+ * The main class for the entity_pager module that does Business Logic.
  * For best practice Business Logic is kept separate from general Class
- * maintenance tasks. This class extents entitypager which performs
+ * maintenance tasks. This class extents entity_pager which performs
  * general Class duties.
  */
 class EntityPagerOut extends EntityPagerAdvice {

@@ -104,7 +104,7 @@ of 'nid' use 'uid'.
 http://www.jmokay.com/drupal/entity-pager-module
 
 =======================================================
-==========|  Demonstration View Block |================
+==========|  Demonstration Block/View |================
 =======================================================
 
 When turning on this module an Entity Pager demonstration View block is

@@ -20,7 +20,9 @@ function entity_pager_help($path, $arg) {
       $output .= t('<p>It is simple to use, allowing you can create Navigation blocks in a few seconds. For more complex pagers, it can combine with the Entity Reference module to create generic sub-navigation on related entities.</p>');
       $output .= t('<p> &nbsp e.g. navigate through a Brands products or go back to the Brand page itself.</p>');
       $output .= t('<p> &nbsp < prev &nbsp Pepsi &nbsp next ></p>');
-      $output .= t('<p>see demonstration video at:  <a href="https://youtu.be/oJUcjKLz8ls" title="Entity Pager module on YouTube" rel="nofollow">Entity Pager module on YouTube</a>');
+      $output .= t('<p><strong>Demonstration Block/View:</strong></p>');
+      $output .= t('<p>When turning on this module an Entity Pager demonstration View block is created called: <strong>Entity Pager Example</strong>.  Enable this block in a region of your theme on a page with a node on and this will display an Entity Pager block for nodes.</p>');
+      $output .= t('<p>See demonstration video at:  <a href="https://youtu.be/oJUcjKLz8ls" title="Entity Pager module on YouTube" rel="nofollow">Entity Pager module on YouTube</a>');
       return $output;
   }
 }

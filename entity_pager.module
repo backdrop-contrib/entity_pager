@@ -21,7 +21,7 @@ function entity_pager_help($path, $arg) {
       $output .= '<p> &nbsp ' . t('e.g. navigate through a Brands products or go back to the Brand page itself.') . '<p>';
       $output .= '<p> &nbsp ' . t('< prev') . ' &nbsp ' . t('Pepsi') . ' &nbsp ' . t('next >') . '<p>';
 
-      $output .= '<p>' . t('see demonstration video at:  ??????');
+      $output .= '<p>' . t('see demonstration video at:  <a href="https://youtu.be/oJUcjKLz8ls" title="Entity Pager module on YouTube" rel="nofollow">Entity Pager module on YouTube</a>');
       return $output;
   }
 }

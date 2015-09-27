@@ -10,7 +10,7 @@
  *
  * @ingroup views_style_plugins
  */
-class EntityPagerViewsPluginStyle extends views_plugin_style {
+class entity_pager_views_plugin_style extends views_plugin_style {
 
   /**
    * Render the display in this style.

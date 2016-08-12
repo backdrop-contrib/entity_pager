@@ -55,7 +55,7 @@ class EntityPagerViewsPluginStyle extends views_plugin_style {
 
     $form['next_prev']['link_next'] = array(
       '#title' => t('Next label'),
-      '#description' => t('The text to display for the Next link.'),
+      '#description' => t('The text to display for the Next link. HTML is allowed.'),
       '#type' => 'textfield',
       '#default_value' => (isset($this->options['next_prev']['link_next'])
         ? $this->options['next_prev']['link_next']
@@ -64,7 +64,7 @@ class EntityPagerViewsPluginStyle extends views_plugin_style {
 
     $form['next_prev']['link_prev'] = array(
       '#title' => t('Previous label'),
-      '#description' => t('The text to display for the Previous link.'),
+      '#description' => t('The text to display for the Previous link. HTML is allowed.'),
       '#type' => 'textfield',
       '#default_value' => (isset($this->options['next_prev']['link_prev'])
         ? $this->options['next_prev']['link_prev']
@@ -100,6 +100,7 @@ class EntityPagerViewsPluginStyle extends views_plugin_style {
               entity reference in this box and the referenced
               <strong>Entity Title</strong> will automatically be displayed.
               </li>
+              <li>HTML is allowed.</li>
           </ul>"
       ),
       '#type' => 'textfield',

@@ -193,7 +193,7 @@ class EntityPagerOut extends EntityPagerAdvice {
 
       if ($next) {
         $links['next'] = l($n['next'],
-          $entity_url . '/' . $result->$field_name);
+          $entity_url . '/' . $result->$field_name, array('html' => TRUE));
         break;
       }
 
@@ -203,7 +203,7 @@ class EntityPagerOut extends EntityPagerAdvice {
         $current_cnt = $cnt;
         $links['prev'] = $n['prev'];
         if ($cnt > 1) {
-          $links['prev'] = l($n['prev'], $entity_url . '/' . $n['cur_prev']);
+          $links['prev'] = l($n['prev'], $entity_url . '/' . $n['cur_prev'], array('html' => TRUE));
         }
         // There is a next value.
         $next = TRUE;
@@ -230,7 +230,7 @@ class EntityPagerOut extends EntityPagerAdvice {
     $all_tle = $this->getAllTitle();
     $all_url = $this->getAllUrl();
     if ($all_tle && $all_url) {
-      $links['all_link'] = l($all_tle, $all_url);
+      $links['all_link'] = l($all_tle, $all_url, array('html' => TRUE));
     }
 
     $links = $this->orderLinks($links);

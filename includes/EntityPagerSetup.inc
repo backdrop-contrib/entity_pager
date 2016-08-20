@@ -217,7 +217,7 @@ abstract class EntityPagerSetup extends EntityPager {
    *
    * Get the word associated with the count of results.
    * i.e. one, many
-   * The number in the result converted to a word for privacy.
+   * The number in the result converted to a summary word for privacy.
    *
    * @return text
    *   Get a text representation the number of records e.g. none, one or many.

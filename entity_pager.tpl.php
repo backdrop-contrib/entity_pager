@@ -23,7 +23,7 @@
  */
 
 ?>
-<ul class="entity_pager">
+<ul class="entity_pager count_word_<?php print $count_word ?>">
   <?php foreach ($links as $key => $link): ?>
     <li class="entity_pager_<?php print $key; ?>">
       <?php print $link ?>

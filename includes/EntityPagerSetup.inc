@@ -211,6 +211,37 @@ abstract class EntityPagerSetup extends EntityPager {
     return $this->getField('all_title');
   }
 
+
+  /**
+   * Get result count word.
+   *
+   * Get the word associated with the count of results.
+   * i.e. one, many
+   * The number in the result converted to a word for privacy.
+   *
+   * @return text
+   *   Get a text representation the number of records e.g. none, one or many.
+   */
+  public function getCountWord() {
+
+    $count = 'invalid';
+
+    if (isset($this->view->result_count)){
+      switch ($this->view->result_count) {
+        case 0:
+          $count = 'none';
+          break;
+        case 1:
+          $count = 'one';
+          break;
+        default:
+          $count = 'many';
+      };
+    }
+
+    return $count;
+  }
+
   /**
    * Set Link All Url.
    *

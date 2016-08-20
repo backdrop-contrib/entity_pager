@@ -26,7 +26,7 @@ class EntityPagerViewsPluginStyle extends views_plugin_style {
       // Only show if it has contents.
       $variables= array(
         'links' => $links,
-        'result_count' => $this->view->result_count
+        'count_word' => $pager->getCountWord()
       );
       return theme('entity_pager', $variables);
     };

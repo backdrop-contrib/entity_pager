@@ -175,8 +175,8 @@ class EntityPagerOut extends EntityPagerAdvice {
 
     // Set defaults for output.
     $links = array(
-      'next' => $n['next'],
-      'prev' => $n['prev'],
+      'next' => '<span class="inactive">'.$n['next'].'</span>',
+      'prev' => '<span class="inactive">'.$n['prev'].'</span>',
       'count' => '',
     );
 
@@ -195,20 +195,22 @@ class EntityPagerOut extends EntityPagerAdvice {
         $links['next'] = l($n['next'],
           $entity_url . '/' . $result->$field_name, array('html' => TRUE));
         break;
-      } else {
-        $links['next'] = '<span class="inactive">'.$n['next'].'</span>';
       }
+//      else {
+//        $links['next'] = '<span class="inactive">'.$n['next'].'</span>';
+//      }
 
       if ($entity->$entity_field == $result->$field_name) {
         // Must be beyond the first record to have a previous.
         $match = TRUE;
         $current_cnt = $cnt;
-        $links['prev'] = $n['prev'];
+//        $links['prev'] = $n['prev'];
         if ($cnt > 1) {
           $links['prev'] = l($n['prev'], $entity_url . '/' . $n['cur_prev'], array('html' => TRUE));
-        } else {
-          $links['prev'] = '<span class="inactive">'.$n['prev'].'</span>';
         }
+//        else {
+//          $links['prev'] = '<span class="inactive">'.$n['prev'].'</span>';
+//        }
         // There is a next value.
         $next = TRUE;
       }

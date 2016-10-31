@@ -31,7 +31,7 @@ class EntityPager {
   protected $default;
 
   /**
-   * The constuctor for entity_pager class.
+   * The constuctor for EntityPager class.
    */
   public function __construct() {
     $this->setDefaults();

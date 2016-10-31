@@ -11,7 +11,7 @@
  * Provides a central and compact section of code where all performance advice
  * logic and messages are handled.
  */
-abstract class EntityPagerAdvice extends EntityPagerSetup {
+class EntityPagerAdvice extends EntityPagerSetup {
 
   /**
    * Check performance.

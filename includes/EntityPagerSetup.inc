@@ -318,7 +318,7 @@ class EntityPagerSetup extends EntityPager {
       return $this->outSettings->id_field_name;
     }
     else {
-      drupal_set_message(t(
+      backdrop_set_message(t(
         'Entity Pager Module:  you need to select an ID field in your View
          e.g. nid for nodes, or uid for user etc..',
         'warning'));

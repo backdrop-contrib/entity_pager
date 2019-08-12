@@ -27,6 +27,16 @@ function entity_pager_help($path, $arg) {
   }
 }
 
+function entity_pager_autoload_info() {
+  return array(
+    'EntityPagerViewsPluginStyle' => 'views/plugins/EntityPagerViewsPluginStyle.inc',
+    'EntityPager' => 'includes/EntityPager.inc',
+    'EntityPagerSetup' => 'includes/EntityPagerSetup.inc',
+    'EntityPagerAdvice' => 'includes/EntityPagerAdvice.inc',
+    'EntityPagerOut' => 'includes/EntityPagerOut.inc',
+  );
+}
+
 /**
  * Implements hook_views_api().
  *
@@ -35,7 +45,7 @@ function entity_pager_help($path, $arg) {
 function entity_pager_views_api() {
   return array(
     'api' => '3.0',
-    'path' => drupal_get_path('module', 'entity_pager') . '/views',
+    'path' => backdrop_get_path('module', 'entity_pager') . '/views',
   );
 }
 
@@ -65,5 +75,5 @@ function entity_pager_theme() {
  *   An associative array of $variables passed into template.
  */
 function template_preprocess_entity_pager(array &$variables) {
-  drupal_add_css(drupal_get_path('module', 'entity_pager') . '/css/entity_pager.css');
+  backdrop_add_css(backdrop_get_path('module', 'entity_pager') . '/css/entity_pager.css');
 }

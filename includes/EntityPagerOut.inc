@@ -79,7 +79,7 @@ class EntityPagerOut extends EntityPagerAdvice {
       // No tokens used.
       $new_url = $url;
     }
-    elseif (drupal_valid_path($detokened['url'])) {
+    elseif (backdrop_valid_path($detokened['url'])) {
       // A valid url e.g. edit node.
       $new_url = $detokened['url'];
     }
@@ -127,7 +127,7 @@ class EntityPagerOut extends EntityPagerAdvice {
     $field_value = $field_long[LANGUAGE_NONE][0]['target_id'];
 
     if (isset($field_value) && is_numeric($field_value)) {
-      $link_all_url = drupal_get_path_alias($entity_type . '/' . $field_value);
+      $link_all_url = backdrop_get_path_alias($entity_type . '/' . $field_value);
     }
 
     return $link_all_url;

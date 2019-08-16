@@ -13,6 +13,22 @@
 class EntityPagerViewsPluginStyle extends views_plugin_style {
 
   /**
+   * Initialize a style plugin.
+   *
+   * @param $view
+   * @param $display
+   * @param $options
+   *   The style options might come externally as the style can be sourced
+   *   from at least two locations. If it's not included, look on the display.
+   */
+  function init(&$view, &$display, $options = NULL) {
+
+    $this->definition += array(
+      'uses grouping' => FALSE,
+    );
+  }
+
+  /**
    * Render the display in this style.
    */
   public function render() {
@@ -136,13 +152,11 @@ class EntityPagerViewsPluginStyle extends views_plugin_style {
     );
 
     // Remove unwanted inherited form elements.
-    $form['grouping'] = '';
-
     if ($this->uses_fields()) {
-      $form['row_class'] = '';
+      $form['row_class'] = array();
     }
-    $form['default_row_class'] = '';
-    $form['row_class_special'] = '';
+    $form['default_row_class'] = array();
+    $form['row_class_special'] = array();
   }
 
 }

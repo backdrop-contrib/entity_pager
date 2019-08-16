@@ -22,10 +22,8 @@ class EntityPagerViewsPluginStyle extends views_plugin_style {
    *   from at least two locations. If it's not included, look on the display.
    */
   function init(&$view, &$display, $options = NULL) {
-
-    $this->definition += array(
-      'uses grouping' => FALSE,
-    );
+    parent::init($view, $display, $options);
+    $this->definition['uses grouping'] = FALSE;
   }
 
   /**
@@ -57,7 +55,6 @@ class EntityPagerViewsPluginStyle extends views_plugin_style {
    *   A keyed array containing the current state of the form.
    */
   public function options_form(&$form, &$form_state) {
-
     parent::options_form($form, $form_state);
 
     $default = new EntityPager();

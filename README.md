@@ -1,9 +1,6 @@
 Entity Pager
 ============
 
-Description
------------
-
 Provides next and previous navigation on entities.
 
 You can add multiple different navigation blocks on the same entity.
@@ -11,8 +8,8 @@ This module combines Views, Blocks, Tokens and has its own internal intelligent
 advice system with run fast with the minimum of processing.
 
 It is simple to use, allowing you can create Navigation blocks in a few seconds.
-For more complex pagers, it can combine with the Entity Reference module to
-create generic sub-navigation on related entities.
+For more complex pagers, it can combine with the Entity Reference, References,
+and Taxonomy modules to create generic sub-navigation on related entities.
 
 e.g. navigate through a Brands products or go back to the Brand page itself.
 

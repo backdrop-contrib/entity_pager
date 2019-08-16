@@ -98,10 +98,10 @@ class EntityPagerViewsPluginStyle extends views_plugin_style {
           to display for the <strong>List All URL.
           </strong>
           <ul>
-              <li>When an <strong>entity reference</strong> is used in
+              <li>When an <strong>reference</strong> is used in
               the <strong>List All URL</strong> box above, just add the same
-              entity reference in this box and the referenced
-              <strong>Entity Title</strong> will automatically be displayed.
+              reference in this box and the referenced
+              <strong>Title</strong> will automatically be displayed.
               </li>
               <li>HTML is allowed.</li>
           </ul>"

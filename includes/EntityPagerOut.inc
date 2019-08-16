@@ -58,7 +58,7 @@ class EntityPagerOut extends EntityPagerAdvice {
    *
    * The 'All' link can have tokens set in it in the Views > settings form
    * 'Entity Pager' section.  This function processes the values added.
-   * E.g. it can turn things like entity references into Titles with links.
+   * E.g. it can turn things like references into Titles with links.
    *
    * @param string $entity_type
    *   The type of entity.
@@ -84,7 +84,7 @@ class EntityPagerOut extends EntityPagerAdvice {
       $new_url = $detokened['url'];
     }
     else {
-      // Entity reference process.
+      // Reference process.
       $new_url = $this->entityRefUrlFromToken($entity_type, $entity, $url);
     }
     $this->setAllUrl($new_url);
@@ -92,10 +92,11 @@ class EntityPagerOut extends EntityPagerAdvice {
   }
 
   /**
-   * Process Entity Reference URL from tokens.
+   * Process Reference URL from tokens.
    *
-   * If it is established the Tokens are Entity References, this method
-   * converts them into useful information.
+   * If it is established the Tokens are References, this method
+   * converts them into useful information. This will work with
+   * Entity Reference, References and Term References.
    *
    * @param string $entity_type
    *   The type of entity.
@@ -105,7 +106,7 @@ class EntityPagerOut extends EntityPagerAdvice {
    *   The link with the token in.
    *
    * @return bool|mixed|null|string
-   *   return a url from an Entity Reference.
+   *   return a url from a reference.
    */
   protected function entityRefUrlFromToken($entity_type, $entity, $link_with_token) {
 
@@ -116,15 +117,14 @@ class EntityPagerOut extends EntityPagerAdvice {
     $trimmed = trim($link_with_token, '[]');
     $token_in_url = explode(':', $trimmed);
     // E.g. field_company.
-    $field = $token_in_url[1];
+    $field_name = $token_in_url[1];
     // Set the id field.
-    $this->setField('id_field', $field);
+    $this->setField('id_field', $field_name);
 
-    // E.g. $node->field_company['und'][0]['entity']->nid;
-    $field_long = $entity->$field;
+    $field_items = field_get_items($entity_type, $entity, $field_name);
+    $value_key = key($field_items[0]);
 
-    // E.g. $field_value = $field_value[LANGUAGE_NONE][0]['entity']->nid;
-    $field_value = $field_long[LANGUAGE_NONE][0]['target_id'];
+    $field_value = field_get_value($entity, $field_name, $value_key);
 
     if (isset($field_value) && is_numeric($field_value)) {
       $link_all_url = backdrop_get_path_alias($entity_type . '/' . $field_value);
